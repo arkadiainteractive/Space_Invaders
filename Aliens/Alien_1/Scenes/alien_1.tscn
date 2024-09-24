@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dopa88phf7x81"]
+[gd_scene load_steps=7 format=3 uid="uid://dopa88phf7x81"]
 
 [ext_resource type="ArrayMesh" uid="uid://dfemtdcimoqot" path="res://Aliens/Alien_1/Models/alien_1.obj" id="1_014bg"]
 [ext_resource type="Script" path="res://Aliens/Alien_1/Scripts/alien_1.gd" id="1_a0yc0"]
-[ext_resource type="PackedScene" uid="uid://c3mj0d5j3imru" path="res://Fragments/BasicFragment/Scenes/basic_fragment.tscn" id="3_narg4"]
 [ext_resource type="Script" path="res://Fragments/Frags/Scrips/fragments.gd" id="4_ami6b"]
 [ext_resource type="Script" path="res://Fragments/Frags/Scrips/frag.gd" id="4_k05d5"]
 
@@ -28,7 +27,7 @@ shape = SubResource("BoxShape3D_drteo")
 
 [node name="Area3D" type="Area3D" parent="RigidBody3D"]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 6
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00358582, 0.779053, 0.0567627)
@@ -38,19 +37,107 @@ shape = SubResource("BoxShape3D_pmugb")
 script = ExtResource("4_ami6b")
 
 [node name="Frag_1" type="Node3D" parent="RigidBody3D/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.091887, 1.39576, -0.17488)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0929691, 1.36533, 0.0355073)
 script = ExtResource("4_k05d5")
 
 [node name="Frag_2" type="Node3D" parent="RigidBody3D/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0965941, 1.39576, -0.17488)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0887339, 1.36533, 0.0355073)
 script = ExtResource("4_k05d5")
 
 [node name="Frag_3" type="Node3D" parent="RigidBody3D/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.294096, 1.19826, -0.17488)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.286271, 1.18362, 0.0355073)
 script = ExtResource("4_k05d5")
 
-[node name="BasicFragment" parent="." instance=ExtResource("3_narg4")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.294096, 14.6903, -0.17488)
-visible = false
+[node name="Frag_4" type="Node3D" parent="RigidBody3D/Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0929691, 1.15656, 0.0355073)
+script = ExtResource("4_k05d5")
+
+[node name="Frag_5" type="Node3D" parent="RigidBody3D/Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.140082, 1.1527, 0.0355073)
+script = ExtResource("4_k05d5")
+
+[node name="Frag_6" type="Node3D" parent="RigidBody3D/Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.282035, 1.19136, 0.0355073)
+script = ExtResource("4_k05d5")
+
+[node name="Frag_7" type="Node3D" parent="RigidBody3D/Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.485643, 0.985185, 0.0355073)
+script = ExtResource("4_k05d5")
+
+[node name="Frag_8" type="Node3D" parent="RigidBody3D/Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.29975, 0.985185, 0.0355073)
+script = ExtResource("4_k05d5")
+
+[node name="Frag_9" type="Node3D" parent="RigidBody3D/Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0971465, 0.985185, 0.0355073)
+script = ExtResource("4_k05d5")
+
+[node name="Frag_10" type="Node3D" parent="RigidBody3D/Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0991905, 0.985185, 0.0355073)
+script = ExtResource("4_k05d5")
+
+[node name="Frag_11" type="Node3D" parent="RigidBody3D/Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.282995, 0.985185, 0.0355073)
+script = ExtResource("4_k05d5")
+
+[node name="Frag_12" type="Node3D" parent="RigidBody3D/Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.491865, 0.985185, 0.0355073)
+script = ExtResource("4_k05d5")
+
+[node name="Frag_13" type="Node3D" parent="RigidBody3D/Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.692379, 0.755428, 0.0355073)
+script = ExtResource("4_k05d5")
+
+[node name="Frag_14" type="Node3D" parent="RigidBody3D/Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.493953, 0.755428, 0.0355073)
+script = ExtResource("4_k05d5")
+
+[node name="Frag_15" type="Node3D" parent="RigidBody3D/Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.270463, 0.755428, 0.0355073)
+script = ExtResource("4_k05d5")
+
+[node name="Frag_16" type="Node3D" parent="RigidBody3D/Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0887471, 0.755428, 0.0355073)
+script = ExtResource("4_k05d5")
+
+[node name="Frag_17" type="Node3D" parent="RigidBody3D/Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10759, 0.755428, 0.0355073)
+script = ExtResource("4_k05d5")
+
+[node name="Frag_18" type="Node3D" parent="RigidBody3D/Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.289306, 0.755428, 0.0355073)
+script = ExtResource("4_k05d5")
+
+[node name="Frag_19" type="Node3D" parent="RigidBody3D/Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.503953, 0.755428, 0.0355073)
+script = ExtResource("4_k05d5")
+
+[node name="Frag_20" type="Node3D" parent="RigidBody3D/Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.694342, 0.755428, 0.0355073)
+script = ExtResource("4_k05d5")
+
+[node name="Frag_21" type="Node3D" parent="RigidBody3D/Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.309888, 0.49475, 0.0355073)
+script = ExtResource("4_k05d5")
+
+[node name="Frag_22" type="Node3D" parent="RigidBody3D/Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.299175, 0.49475, 0.0355073)
+script = ExtResource("4_k05d5")
+
+[node name="Frag_23" type="Node3D" parent="RigidBody3D/Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.496342, 0.285984, 0.0355073)
+script = ExtResource("4_k05d5")
+
+[node name="Frag_24" type="Node3D" parent="RigidBody3D/Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0904089, 0.285984, 0.0355073)
+script = ExtResource("4_k05d5")
+
+[node name="Frag_25" type="Node3D" parent="RigidBody3D/Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0990265, 0.285984, 0.0355073)
+script = ExtResource("4_k05d5")
+
+[node name="Frag_26" type="Node3D" parent="RigidBody3D/Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.501093, 0.285984, 0.0355073)
+script = ExtResource("4_k05d5")
 
 [connection signal="body_entered" from="RigidBody3D/Area3D" to="RigidBody3D/Fragments" method="_on_area_3d_body_entered"]

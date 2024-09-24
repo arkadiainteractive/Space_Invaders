@@ -40,11 +40,11 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_i7awt")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_oyduu"]
-size = Vector3(0.203232, 0.203568, 0.203491)
+[sub_resource type="BoxShape3D" id="BoxShape3D_s4ipt"]
+size = Vector3(1.93463, 1.92194, 1.92181)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_33mvn"]
-size = Vector3(0.210446, 0.211895, 0.21131)
+[sub_resource type="BoxShape3D" id="BoxShape3D_l1u3v"]
+size = Vector3(0.239502, 0.244995, 0.234009)
 
 [node name="BasicFragment" type="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.020752, 0, -0.125625)
@@ -56,11 +56,12 @@ mesh = SubResource("ArrayMesh_iba2c")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0199051, 0.00145722, 0.219666)
-shape = SubResource("BoxShape3D_oyduu")
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.0201139, 0.000580676, 0.22101)
+visible = false
+shape = SubResource("BoxShape3D_s4ipt")
 
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0200618, 0.00119026, 0.220133)
-shape = SubResource("BoxShape3D_33mvn")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0194092, 0.000549316, 0.219543)
+shape = SubResource("BoxShape3D_l1u3v")

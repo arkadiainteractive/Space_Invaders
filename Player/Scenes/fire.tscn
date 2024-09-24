@@ -3,6 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://dqggxeg1m6lpo" path="res://Player/Models/fire_0.png" id="1_3psvr"]
 [ext_resource type="Script" path="res://Player/Scripts/fire.gd" id="1_wjd6h"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_75hv3"]
+size = Vector3(0.477032, 0.401184, 0.567491)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cib4h"]
 resource_name = "Material.1"
 albedo_texture = ExtResource("1_3psvr")
@@ -41,18 +44,23 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_njgki")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_75hv3"]
-size = Vector3(0.477032, 0.401184, 0.567491)
-
 [node name="Fire" type="CharacterBody3D"]
 collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_wjd6h")
-
-[node name="Fire2" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
-mesh = SubResource("ArrayMesh_6tybv")
-skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00337023, 0.417389, 0.203667)
 shape = SubResource("BoxShape3D_75hv3")
+
+[node name="Fire2" type="MeshInstance3D" parent="CollisionShape3D"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.00337023, -0.417389, -0.203667)
+mesh = SubResource("ArrayMesh_6tybv")
+skeleton = NodePath("")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CollisionShape3D"]
+light_color = Color(0.842635, 9.62615e-07, 2.88785e-07, 1)
+light_energy = 16.0
+light_indirect_energy = 16.0
+light_size = 1.0
+shadow_enabled = true
