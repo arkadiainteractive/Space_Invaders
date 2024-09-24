@@ -1,6 +1,7 @@
 extends Node3D
 
 signal exploded
+signal destroy
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,3 +13,4 @@ func _process(delta: float) -> void:
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	emit_signal("exploded")
+	emit_signal("destroy")

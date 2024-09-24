@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://c3mj0d5j3imru"]
+[gd_scene load_steps=7 format=4 uid="uid://c3mj0d5j3imru"]
 
 [ext_resource type="Texture2D" uid="uid://dfhn76iam1m7u" path="res://Fragments/BasicFragment/Models/fragment_2x2x2_0.png" id="1_hniki"]
 
@@ -40,26 +40,27 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_i7awt")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_oyduu"]
+size = Vector3(0.203232, 0.203568, 0.203491)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_33mvn"]
-size = Vector3(2.02582, 2.03027, 2.02365)
+size = Vector3(0.210446, 0.211895, 0.21131)
 
-[node name="BasicFragment" type="Node3D"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.0103149, -0.00219727, -0.0909705)
-
-[node name="BasicFragment" type="RigidBody3D" parent="."]
+[node name="BasicFragment" type="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.020752, 0, -0.125625)
+collision_mask = 0
 
-[node name="Layer_1" type="MeshInstance3D" parent="BasicFragment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.00357, 0)
+[node name="Layer_1" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.0199583, -0.0982566, 0.11975)
 mesh = SubResource("ArrayMesh_iba2c")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BasicFragment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00161743, -0.00634766, 0.996628)
-shape = SubResource("BoxShape3D_33mvn")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0199051, 0.00145722, 0.219666)
+shape = SubResource("BoxShape3D_oyduu")
 
-[node name="Area3D" type="Area3D" parent="BasicFragment"]
+[node name="Area3D" type="Area3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BasicFragment/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00161743, -0.00634766, 0.996628)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0200618, 0.00119026, 0.220133)
 shape = SubResource("BoxShape3D_33mvn")
