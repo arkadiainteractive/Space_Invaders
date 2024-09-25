@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://csex0scjb6fkv"
-path="res://.godot/imported/alien_2.gltf-49464845758079bc7056ae38db915d69.scn"
+uid="uid://d01kx3ge1j1ik"
+path="res://.godot/imported/alien_1.gltf-39cf4d111ea7143c5006899ddcb42c77.scn"
 
 [deps]
 
-source_file="res://Aliens/Alien_2/Models/alien_2.gltf"
-dest_files=["res://.godot/imported/alien_2.gltf-49464845758079bc7056ae38db915d69.scn"]
+source_file="res://Aliens/Alien_1/Models/alien_1.gltf"
+dest_files=["res://.godot/imported/alien_1.gltf-39cf4d111ea7143c5006899ddcb42c77.scn"]
 
 [params]
 

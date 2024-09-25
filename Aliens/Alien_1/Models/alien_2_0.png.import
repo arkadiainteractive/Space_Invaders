@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqt7g3o3r7cs2"
-path.s3tc="res://.godot/imported/alien_2_0.png-b0d79593fc49c40fd147f37a33657d9d.s3tc.ctex"
+uid="uid://dpeyv7xtdavmd"
+path.s3tc="res://.godot/imported/alien_2_0.png-d07fe090896690b39050b24bf64af48b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Aliens/Alien_2/Models/alien_2_0.png"
-dest_files=["res://.godot/imported/alien_2_0.png-b0d79593fc49c40fd147f37a33657d9d.s3tc.ctex"]
+source_file="res://Aliens/Alien_1/Models/alien_2_0.png"
+dest_files=["res://.godot/imported/alien_2_0.png-d07fe090896690b39050b24bf64af48b.s3tc.ctex"]
 
 [params]
 

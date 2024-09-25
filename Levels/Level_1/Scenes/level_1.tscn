@@ -31,7 +31,7 @@ environment = SubResource("Environment_6l52w")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.998537, -0.0540788, 0, 0.0540788, 0.998537, -1, 7.96476, 40.4106)
+transform = Transform3D(1, 0, 0, 0, 0.998537, -0.0540788, 0, 0.0540788, 0.998537, -1, 7.96476, 27.7805)
 fov = 50.0
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
