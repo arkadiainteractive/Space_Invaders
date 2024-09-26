@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://6bexoj0gd8qn"]
+[gd_scene load_steps=12 format=3 uid="uid://6bexoj0gd8qn"]
 
 [ext_resource type="PackedScene" uid="uid://dopa88phf7x81" path="res://Aliens/Alien_1/Scenes/alien_1.tscn" id="1_kxlt4"]
 [ext_resource type="PackedScene" uid="uid://cgq5k1nvd1p8m" path="res://Aliens/Alien_2/Scenes/alien_2.tscn" id="2_g4jpc"]
 [ext_resource type="PackedScene" uid="uid://cm4fy3nqsm6fq" path="res://Aliens/Alien_3/Scenes/alien_3.tscn" id="3_n1la0"]
 [ext_resource type="PackedScene" uid="uid://colccl4i7stpi" path="res://Player/Scenes/player.tscn" id="4_kaooo"]
+[ext_resource type="PackedScene" uid="uid://bsva8ndpvctge" path="res://Aim/Scenes/aim.tscn" id="5_uqrme"]
+[ext_resource type="PackedScene" uid="uid://35xs632up01e" path="res://Player2/Scenes/player_2.tscn" id="7_2jh4d"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i866c"]
 
@@ -30,10 +32,6 @@ environment = SubResource("Environment_6l52w")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.998537, -0.0540788, 0, 0.0540788, 0.998537, -1, 7.96476, 27.7805)
-fov = 50.0
-
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 collision_mask = 3
 
@@ -55,3 +53,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.1015, 0)
 
 [node name="Alien_3" parent="." instance=ExtResource("3_n1la0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.65354, 11.1015, 0)
+
+[node name="Aim" parent="." instance=ExtResource("5_uqrme")]
+
+[node name="Player2" parent="." instance=ExtResource("7_2jh4d")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 20)
