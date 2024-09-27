@@ -37,7 +37,7 @@ size = Vector3(2.60203, 1.37521, 0.37435)
 [sub_resource type="BoxShape3D" id="BoxShape3D_cufrp"]
 size = Vector3(2.95337, 1.77182, 0.617798)
 
-[node name="Alien_2" type="Node3D"]
+[node name="Alien_2" type="Node3D" groups=["Enenmy"]]
 script = ExtResource("1_nl312")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]

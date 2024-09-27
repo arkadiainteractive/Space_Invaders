@@ -54,7 +54,7 @@ shadow_mesh = SubResource("ArrayMesh_cd6w0")
 [sub_resource type="BoxShape3D" id="BoxShape3D_pmugb"]
 size = Vector3(2.07767, 1.44189, 0.753174)
 
-[node name="Alien_1" type="Node3D"]
+[node name="Alien_1" type="Node3D" groups=["Enemy"]]
 script = ExtResource("1_a0yc0")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]

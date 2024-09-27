@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dmljs6wjm5ity"
-path="res://.godot/imported/fire.gltf-860bdaa1407581dd2c564340404ce331.scn"
+uid="uid://heegtkfeox1x"
+path="res://.godot/imported/block.gltf-1f43f83bd852c8bea4fec3848e214f11.scn"
 
 [deps]
 
-source_file="res://Player/Models/fire.gltf"
-dest_files=["res://.godot/imported/fire.gltf-860bdaa1407581dd2c564340404ce331.scn"]
+source_file="res://Weapons/Missile/Models/Propulsion/block.gltf"
+dest_files=["res://.godot/imported/block.gltf-1f43f83bd852c8bea4fec3848e214f11.scn"]
 
 [params]
 

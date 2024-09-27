@@ -9,8 +9,10 @@ class_name Player3person
 var max_rotation_angle = 0.523599  # 30 grados en radianes
 
 var aim_control: Control
-var fire_scene = load("res://Player/Scenes/fire.tscn")
+var fire_scene = load("res://Weapons/Fire/Scenes/fire.tscn")
+var missile_scene = load("res://Weapons/Missile/Scenes/missile.tscn")
 var fire_instance
+var missile_instance
 
 # Variables para almacenar la dirección inicial de los launchers
 var left_launcher_initial_forward: Vector3
@@ -45,6 +47,25 @@ func _process(delta):
 		get_tree().current_scene.add_child(fire_instance)
 		fire_instance.velocity = direction * 50
 
+	if Input.is_action_just_pressed("alter_fire"):
+		print("MISSILE!")
+		missile_instance = missile_scene.instantiate()
+		var missile_scale = missile_instance.scale
+
+		# Colocar el misil en la posición y rotación del lanzador derecho
+		missile_instance.global_transform = right_launcher.global_transform
+		missile_instance.position = $RightLuncher/RightMissileSpot.global_position
+
+		print("INSTANCIA DE MISIL: ", missile_instance)
+
+		# Obtener la dirección en la que apunta el lanzador y asignarla al misil
+		var direction = right_launcher.global_transform.basis.z.normalized()
+
+		missile_instance.scale = -missile_scale
+
+		get_tree().current_scene.add_child(missile_instance)
+		missile_instance.velocity = direction * 50
+
 	if aim_control != null:
 		var mouse_position = get_viewport().get_mouse_position()
 
@@ -52,10 +73,10 @@ func _process(delta):
 		var direction = camera.project_ray_normal(mouse_position)
 
 		var target_position = from + -direction * 1000
-		
+
 		# Orientar el cañón hacia la posición objetivo (sin rotar 180 grados)
 		cannon.look_at(target_position, Vector3.UP)
-		
+
 		# Ajustar la orientación de los launchers
 		orient_launcher(left_launcher, target_position, left_launcher_initial_forward)
 		orient_launcher(right_launcher, target_position, right_launcher_initial_forward)

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b6yeshlvwdhu5"
-path="res://.godot/imported/alien_1.gltf-423707e061514ee7965c80485662866e.scn"
+uid="uid://dvegq00ygktq0"
+path="res://.godot/imported/missile.gltf-32ba177ecaf49eb65f7cf3e0980285a6.scn"
 
 [deps]
 
-source_file="res://Shield/alien_1.gltf"
-dest_files=["res://.godot/imported/alien_1.gltf-423707e061514ee7965c80485662866e.scn"]
+source_file="res://Weapons/Missile/Models/Missile/missile.gltf"
+dest_files=["res://.godot/imported/missile.gltf-32ba177ecaf49eb65f7cf3e0980285a6.scn"]
 
 [params]
 

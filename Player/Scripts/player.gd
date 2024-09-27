@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
-var fire_scene = load("res://Player/Scenes/fire.tscn")
+var fire_scene = load("res://Weapons/Fire/Scenes/fire.tscn")
 var fire_instance
 
 func _physics_process(delta: float) -> void:

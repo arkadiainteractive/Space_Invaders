@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqggxeg1m6lpo"
-path.s3tc="res://.godot/imported/fire_0.png-d08a015fd635e0c8959fbffdb232b66f.s3tc.ctex"
+uid="uid://cg0qk251nf74o"
+path.s3tc="res://.godot/imported/missile_0.png-77d7ce575b4e536260836e8a4369c4a1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "80b3516831cecee0e475b31a1b69970f"
+"md5": "424daab42a950e5fd154d8b6134c2e18"
 }
 
 [deps]
 
-source_file="res://Player/Models/fire_0.png"
-dest_files=["res://.godot/imported/fire_0.png-d08a015fd635e0c8959fbffdb232b66f.s3tc.ctex"]
+source_file="res://Weapons/Missile/Models/Missile/missile_0.png"
+dest_files=["res://.godot/imported/missile_0.png-77d7ce575b4e536260836e8a4369c4a1.s3tc.ctex"]
 
 [params]
 

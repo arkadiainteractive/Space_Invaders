@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://35xs632up01e"]
+[gd_scene load_steps=22 format=4 uid="uid://35xs632up01e"]
 
 [ext_resource type="Script" path="res://Player2/Scripts/player_2.gd" id="1_hlvis"]
 [ext_resource type="Texture2D" uid="uid://wigdr42qrwfk" path="res://Player2/Models/player2_0.png" id="3_np3pv"]
@@ -7,9 +7,6 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="5_ovtni"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_wclxu"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="7_hewqj"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_v0180"]
-size = Vector3(0.758057, 0.234863, 0.70166)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lymk3"]
 size = Vector3(2.18036, 0.855972, 1.14268)
@@ -162,10 +159,6 @@ shadow_mesh = SubResource("ArrayMesh_w10f5")
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.000976562, 0, -0.016861)
 script = ExtResource("1_hlvis")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00134277, 1.14868, -0.14917)
-shape = SubResource("BoxShape3D_v0180")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00784052, 0.483865, -0.399148)
 shape = SubResource("BoxShape3D_lymk3")
@@ -189,7 +182,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00091e-07, 0.135977, 1.136
 shape = SubResource("BoxShape3D_5qhnq")
 
 [node name="FireSpot" type="Node3D" parent="Cannon"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00646994, -0.0105838, 2.38371)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00646994, -0.271918, 2.38371)
 
 [node name="PhantomCamera3D" type="Node3D" parent="."]
 transform = Transform3D(-1, -2.99003e-08, -8.21505e-08, 0, 0.939693, -0.34202, 8.74228e-08, -0.34202, -0.939693, 0, 1.39329, -2.91076)
@@ -207,10 +200,13 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.812028, 1.11826, -0.3
 transform = Transform3D(1, -5.68434e-14, 5.68434e-14, 5.68434e-14, 1, 1.06581e-14, -5.68434e-14, -1.06581e-14, 1, -0.0523329, 0.670837, 2.90157)
 shape = SubResource("BoxShape3D_7ekhf")
 
-[node name="Layer_1" type="MeshInstance3D" parent="LeftLuncher"]
+[node name="Luncher" type="MeshInstance3D" parent="LeftLuncher"]
 transform = Transform3D(1, -5.68434e-14, 0, 0, -4.37114e-08, 1, -5.68434e-14, -1, -4.37114e-08, -1.00818, 0.15086, 4.62881)
 mesh = SubResource("ArrayMesh_6njo1")
 skeleton = NodePath("")
+
+[node name="LeftMissileSpot" type="Node3D" parent="LeftLuncher"]
+transform = Transform3D(10, 0, 6.82121e-13, 0, 10, 0, -6.82121e-13, 0, 10, 0.0172491, -0.252124, 5.01803)
 
 [node name="RightLuncher" type="CharacterBody3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.809, 1.118, -0.325)
@@ -219,7 +215,10 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.809, 1.118, -0.325)
 transform = Transform3D(1, -5.68434e-14, 5.68434e-14, 5.68434e-14, 1, 1.06581e-14, -5.68434e-14, -1.06581e-14, 1, 0.000867844, 0.670837, 2.90157)
 shape = SubResource("BoxShape3D_7ekhf")
 
-[node name="Layer_1" type="MeshInstance3D" parent="RightLuncher"]
+[node name="Luncher" type="MeshInstance3D" parent="RightLuncher"]
 transform = Transform3D(1, -5.68434e-14, 0, 0, -4.37114e-08, 1, -5.68434e-14, -1, -4.37114e-08, -1.00818, 0.15086, 4.62881)
 mesh = SubResource("ArrayMesh_6njo1")
 skeleton = NodePath("")
+
+[node name="RightMissileSpot" type="Node3D" parent="RightLuncher"]
+transform = Transform3D(10, 0, 1.19371e-12, 0, 10, 0, -1.19371e-12, 0, 10, 0.117674, 0.0305758, 13.5483)

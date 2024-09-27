@@ -1,14 +1,14 @@
 [gd_scene load_steps=7 format=4 uid="uid://ba2xc6fktv5ap"]
 
-[ext_resource type="Texture2D" uid="uid://dqggxeg1m6lpo" path="res://Player/Models/fire_0.png" id="1_3psvr"]
-[ext_resource type="Script" path="res://Player/Scripts/fire.gd" id="1_wjd6h"]
+[ext_resource type="Script" path="res://Weapons/Fire/Scripts/fire.gd" id="1_pn776"]
+[ext_resource type="Texture2D" uid="uid://dqggxeg1m6lpo" path="res://Weapons/Fire/Models/fire_0.png" id="2_c0y0u"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_75hv3"]
 size = Vector3(0.477032, 0.401184, 0.567491)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cib4h"]
 resource_name = "Material.1"
-albedo_texture = ExtResource("1_3psvr")
+albedo_texture = ExtResource("2_c0y0u")
 metallic = 0.2
 roughness = 0.5
 
@@ -47,7 +47,7 @@ shadow_mesh = SubResource("ArrayMesh_njgki")
 [node name="Fire" type="CharacterBody3D"]
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("1_wjd6h")
+script = ExtResource("1_pn776")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00337023, 0.417389, 0.203667)
