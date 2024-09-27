@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bsva8ndpvctge"]
 
 [ext_resource type="Script" path="res://Aim/Scripts/aim_control.gd" id="1_42cx2"]
-[ext_resource type="Texture2D" uid="uid://dr8jmfrfw7yk" path="res://icon.svg" id="2_7wxuq"]
+[ext_resource type="Texture2D" uid="uid://byu0xpmnj7ij3" path="res://Aim/Sprites/Crosshair.png" id="2_6quxs"]
 
 [node name="Aim" type="CanvasLayer"]
 
@@ -10,8 +10,20 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1151.0
 offset_bottom = 646.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 script = ExtResource("1_42cx2")
 
-[node name="Crosshair" type="Sprite2D" parent="AimControl"]
-position = Vector2(585, 287)
-texture = ExtResource("2_7wxuq")
+[node name="CenterContainer" type="CenterContainer" parent="AimControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Crosshair" type="Sprite2D" parent="AimControl/CenterContainer"]
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("2_6quxs")

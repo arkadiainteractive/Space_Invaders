@@ -2,30 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6nij1y5ryl3"
-path.s3tc="res://.godot/imported/luncher_0.png-33c6f277350831ed5b69681eeb7e0f5c.s3tc.ctex"
+uid="uid://byu0xpmnj7ij3"
+path="res://.godot/imported/Crosshair.png-7a6be82dd5ebd2649163325c78a8276c.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
-}
-generator_parameters={
-"md5": "fe5bb887e8279d84b23a44ebb060b806"
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player2/Models/luncher_0.png"
-dest_files=["res://.godot/imported/luncher_0.png-33c6f277350831ed5b69681eeb7e0f5c.s3tc.ctex"]
+source_file="res://Aim/Sprites/Crosshair.png"
+dest_files=["res://.godot/imported/Crosshair.png-7a6be82dd5ebd2649163325c78a8276c.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -35,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

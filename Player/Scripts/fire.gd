@@ -4,5 +4,4 @@ const SPEED = 5.0
 const VELOCITY = 20
 
 func _physics_process(delta: float) -> void:
-	velocity.y = +VELOCITY
 	move_and_slide()
