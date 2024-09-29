@@ -1,9 +1,14 @@
-[gd_scene load_steps=18 format=4 uid="uid://c1mg73ps8wd2b"]
+[gd_scene load_steps=22 format=4 uid="uid://c1mg73ps8wd2b"]
 
 [ext_resource type="Script" path="res://Weapons/Missile/Scripts/missile.gd" id="1_7bofr"]
 [ext_resource type="Texture2D" uid="uid://cg0qk251nf74o" path="res://Weapons/Missile/Models/Missile/missile_0.png" id="1_8yjnq"]
+[ext_resource type="Script" path="res://Weapons/Missile/Scenes/fragments.gd" id="3_w3sau"]
+[ext_resource type="Script" path="res://Fragments/Frags/Scrips/frag.gd" id="4_ajc1c"]
+[ext_resource type="Script" path="res://Weapons/Missile/Scripts/frag.gd" id="4_u5yi3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7hcun"]
+radius = 8.028
+height = 37.183
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4qmbk"]
 resource_name = "Material.1"
@@ -83,7 +88,7 @@ emission_sphere_radius = 5.43
 radial_velocity_min = 2.99998
 radial_velocity_max = 2.99998
 radial_velocity_curve = SubResource("CurveTexture_neji5")
-gravity = Vector3(0, 0, 50)
+gravity = Vector3(0, -10.53, 0)
 damping_min = 8.0
 damping_max = 8.0
 attractor_interaction_enabled = false
@@ -99,17 +104,21 @@ vertex_color_use_as_albedo = true
 [sub_resource type="BoxMesh" id="BoxMesh_na6aw"]
 material = SubResource("StandardMaterial3D_6aitf")
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ntbwc"]
+radius = 7.99
+height = 36.0
+
 [node name="Missile" type="CharacterBody3D"]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0.846485)
+transform = Transform3D(-2.18557e-09, -0.05, 0, 0.05, -2.18557e-09, 0, 0, 0, 0.05, 0, 0, -1.0124)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_7bofr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 2.11758e-22, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.818291, 0.23797, 20.1032)
 shape = SubResource("CapsuleShape3D_7hcun")
 
 [node name="Missile" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_c7hvy")
 skeleton = NodePath("")
 
@@ -119,3 +128,124 @@ amount = 150
 lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_3snac")
 draw_pass_1 = SubResource("BoxMesh_na6aw")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 20.5781)
+shape = SubResource("CapsuleShape3D_ntbwc")
+
+[node name="Explossion" type="GPUParticles3D" parent="."]
+visible = false
+
+[node name="Fragments" type="Node3D" parent="."]
+visible = false
+script = ExtResource("3_w3sau")
+
+[node name="Frag_1" type="Node3D" parent="Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0929691, 1.36533, 0.0355073)
+script = ExtResource("4_u5yi3")
+
+[node name="Frag_2" type="Node3D" parent="Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0887339, 1.36533, 0.0355073)
+script = ExtResource("4_ajc1c")
+
+[node name="Frag_3" type="Node3D" parent="Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.286271, 1.18362, 0.0355073)
+script = ExtResource("4_ajc1c")
+
+[node name="Frag_4" type="Node3D" parent="Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0929691, 1.15656, 0.0355073)
+script = ExtResource("4_ajc1c")
+
+[node name="Frag_5" type="Node3D" parent="Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.140082, 1.1527, 0.0355073)
+script = ExtResource("4_ajc1c")
+
+[node name="Frag_6" type="Node3D" parent="Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.282035, 1.19136, 0.0355073)
+script = ExtResource("4_ajc1c")
+
+[node name="Frag_7" type="Node3D" parent="Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.485643, 0.985185, 0.0355073)
+script = ExtResource("4_ajc1c")
+
+[node name="Frag_8" type="Node3D" parent="Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.29975, 0.985185, 0.0355073)
+script = ExtResource("4_ajc1c")
+
+[node name="Frag_9" type="Node3D" parent="Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0971465, 0.985185, 0.0355073)
+script = ExtResource("4_ajc1c")
+
+[node name="Frag_10" type="Node3D" parent="Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0991905, 0.985185, 0.0355073)
+script = ExtResource("4_ajc1c")
+
+[node name="Frag_11" type="Node3D" parent="Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.282995, 0.985185, 0.0355073)
+script = ExtResource("4_ajc1c")
+
+[node name="Frag_12" type="Node3D" parent="Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.491865, 0.985185, 0.0355073)
+script = ExtResource("4_ajc1c")
+
+[node name="Frag_13" type="Node3D" parent="Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.692379, 0.755428, 0.0355073)
+script = ExtResource("4_ajc1c")
+
+[node name="Frag_14" type="Node3D" parent="Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.493953, 0.755428, 0.0355073)
+script = ExtResource("4_ajc1c")
+
+[node name="Frag_15" type="Node3D" parent="Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.270463, 0.755428, 0.0355073)
+script = ExtResource("4_ajc1c")
+
+[node name="Frag_16" type="Node3D" parent="Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0887471, 0.755428, 0.0355073)
+script = ExtResource("4_ajc1c")
+
+[node name="Frag_17" type="Node3D" parent="Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10759, 0.755428, 0.0355073)
+script = ExtResource("4_ajc1c")
+
+[node name="Frag_18" type="Node3D" parent="Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.289306, 0.755428, 0.0355073)
+script = ExtResource("4_ajc1c")
+
+[node name="Frag_19" type="Node3D" parent="Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.503953, 0.755428, 0.0355073)
+script = ExtResource("4_ajc1c")
+
+[node name="Frag_20" type="Node3D" parent="Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.694342, 0.755428, 0.0355073)
+script = ExtResource("4_ajc1c")
+
+[node name="Frag_21" type="Node3D" parent="Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.309888, 0.49475, 0.0355073)
+script = ExtResource("4_ajc1c")
+
+[node name="Frag_22" type="Node3D" parent="Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.299175, 0.49475, 0.0355073)
+script = ExtResource("4_ajc1c")
+
+[node name="Frag_23" type="Node3D" parent="Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.496342, 0.285984, 0.0355073)
+script = ExtResource("4_ajc1c")
+
+[node name="Frag_24" type="Node3D" parent="Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0904089, 0.285984, 0.0355073)
+script = ExtResource("4_ajc1c")
+
+[node name="Frag_25" type="Node3D" parent="Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0990265, 0.285984, 0.0355073)
+script = ExtResource("4_ajc1c")
+
+[node name="Frag_26" type="Node3D" parent="Fragments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.501093, 0.285984, 0.0355073)
+script = ExtResource("4_ajc1c")
+
+[connection signal="area_shape_entered" from="Area3D" to="Fragments" method="_on_area_3d_area_shape_entered"]

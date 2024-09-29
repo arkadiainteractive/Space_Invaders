@@ -1,11 +1,49 @@
-[gd_scene load_steps=3 format=3 uid="uid://bsva8ndpvctge"]
+[gd_scene load_steps=6 format=3 uid="uid://bsva8ndpvctge"]
 
 [ext_resource type="Script" path="res://Aim/Scripts/aim_control.gd" id="1_42cx2"]
-[ext_resource type="Texture2D" uid="uid://byu0xpmnj7ij3" path="res://Aim/Sprites/Crosshair.png" id="2_6quxs"]
+[ext_resource type="Texture2D" uid="uid://byu0xpmnj7ij3" path="res://Aim/Sprites/Crosshair.png" id="2_owkti"]
+
+[sub_resource type="Animation" id="Animation_gl33w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AimControl/CenterContainer/Crosshair:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.07, 0.07)]
+}
+
+[sub_resource type="Animation" id="Animation_erh6g"]
+resource_name = "locking"
+length = 1.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AimControl/CenterContainer/Crosshair:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.6667, 0.7, 0.9667, 1.3667, 1.4, 1.6667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.2, 0.2), Vector2(0.07, 0.07), Vector2(0.07, 0.07), Vector2(0.2, 0.2), Vector2(0.07, 0.07), Vector2(0.07, 0.07), Vector2(0.2, 0.2), Vector2(0.07, 0.07)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_okwqf"]
+_data = {
+"RESET": SubResource("Animation_gl33w"),
+"locking": SubResource("Animation_erh6g")
+}
 
 [node name="Aim" type="CanvasLayer"]
 
 [node name="AimControl" type="Control" parent="."]
+unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1151.0
@@ -26,4 +64,9 @@ grow_vertical = 2
 
 [node name="Crosshair" type="Sprite2D" parent="AimControl/CenterContainer"]
 scale = Vector2(0.07, 0.07)
-texture = ExtResource("2_6quxs")
+texture = ExtResource("2_owkti")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_okwqf")
+}

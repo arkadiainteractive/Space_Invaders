@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b130kpnm55paj"
-path="res://.godot/imported/locked_aim.png-4502ef71aea571a03435beb2a50d7a5c.ctex"
+uid="uid://dm60eg6sru14w"
+path="res://.godot/imported/Locking_crosshair.png-5591d708727e74c1a8122fa0f0956fdb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Aim/Sprites/locked_aim.png"
-dest_files=["res://.godot/imported/locked_aim.png-4502ef71aea571a03435beb2a50d7a5c.ctex"]
+source_file="res://Aim/Sprites/Locking_crosshair.png"
+dest_files=["res://.godot/imported/Locking_crosshair.png-5591d708727e74c1a8122fa0f0956fdb.ctex"]
 
 [params]
 

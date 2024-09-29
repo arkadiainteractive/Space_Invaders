@@ -12,9 +12,10 @@ func _ready() -> void:
 	mesh_instance = $RigidBody3D/Alien_1
 	material = mesh_instance.mesh.surface_get_material(0)
 	material.albedo_color = color
+	$RigidBody3D.add_constant_central_force(Vector3(4,2,1))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	pass
 
 func Desctroy ():
