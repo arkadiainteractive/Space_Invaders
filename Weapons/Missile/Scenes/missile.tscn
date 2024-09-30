@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=4 uid="uid://c1mg73ps8wd2b"]
+[gd_scene load_steps=23 format=4 uid="uid://c1mg73ps8wd2b"]
 
 [ext_resource type="Script" path="res://Weapons/Missile/Scripts/missile.gd" id="1_7bofr"]
 [ext_resource type="Texture2D" uid="uid://cg0qk251nf74o" path="res://Weapons/Missile/Models/Missile/missile_0.png" id="1_8yjnq"]
 [ext_resource type="Script" path="res://Weapons/Missile/Scenes/fragments.gd" id="3_w3sau"]
 [ext_resource type="Script" path="res://Fragments/Frags/Scrips/frag.gd" id="4_ajc1c"]
 [ext_resource type="Script" path="res://Weapons/Missile/Scripts/frag.gd" id="4_u5yi3"]
+[ext_resource type="Script" path="res://Weapons/Missile/Scripts/missile_explosion_efector.gd" id="6_50e7n"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7hcun"]
 radius = 0.198659
@@ -103,6 +104,9 @@ vertex_color_use_as_albedo = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_na6aw"]
 material = SubResource("StandardMaterial3D_6aitf")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bjjoq"]
+radius = 7.0738
 
 [node name="Missile" type="CharacterBody3D"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -0.493283)
@@ -235,3 +239,14 @@ script = ExtResource("4_ajc1c")
 [node name="Frag_26" type="Node3D" parent="Fragments"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.501093, 0.285984, 0.0355073)
 script = ExtResource("4_ajc1c")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("6_50e7n")
+explosion_force = 1e+09
+explosion_radius = 500.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.49185)
+shape = SubResource("SphereShape3D_bjjoq")

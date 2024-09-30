@@ -7,9 +7,9 @@ var material
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$Alien_3/Fragments.connect("destroy", Desctroy)
-	$Alien_3/Fragments.critical_impacts = critical_impacts
-	mesh_instance = $Alien_3/Alien_3
+	$Fragments.connect("destroy", Desctroy)
+	$Fragments.critical_impacts = critical_impacts
+	mesh_instance = $Alien_3
 	material = mesh_instance.mesh.surface_get_material(0)
 	material.albedo_color = color
 
