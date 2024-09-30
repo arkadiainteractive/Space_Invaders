@@ -42,6 +42,7 @@ size = Vector3(2.31403, 1.81323, 1)
 script = ExtResource("1_j5lqj")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
+can_sleep = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00509769, 0.868324, 0.0579689)
@@ -55,7 +56,7 @@ skeleton = NodePath("")
 
 [node name="Area3D" type="Area3D" parent="RigidBody3D" groups=["Enemy"]]
 collision_layer = 2
-collision_mask = 6
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000640869, 0.869263, 0)
@@ -180,4 +181,4 @@ script = ExtResource("3_r7k5b")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28142, 0.0640399, 0.0581521)
 script = ExtResource("3_r7k5b")
 
-[connection signal="body_entered" from="RigidBody3D/Area3D" to="RigidBody3D/Fragments" method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="RigidBody3D/Area3D" to="RigidBody3D/Fragments" method="_on_fatal_collision"]

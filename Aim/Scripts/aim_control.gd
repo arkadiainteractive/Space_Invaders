@@ -1,23 +1,5 @@
 extends Control
 
-#func _ready():
-	## Ocultar el cursor del sistema para que solo se vea la mira
-	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-#
-	## Asegurar que la mira esté centrada en la posición del mouse al comenzar
-	#_update_crosshair_position()
-#
-#func _process(delta):
-	## Actualizar la posición de la mira según la posición del mouse
-	#_update_crosshair_position()
-#
-#func _update_crosshair_position():
-	## Obtiene la posición actual del mouse
-	#var mouse_position = get_viewport().get_mouse_position()
-#
-	## Mueve la mira a la posición del mouse, centrando la mira
-	#position = mouse_position - size / 2
-
 var crosshair_sprite : Sprite2D
 var target_enemy: Node = null  # Variable para almacenar el enemigo detectado
 var lock_time: float = 1.0  # Tiempo necesario para fijar el objetivo
@@ -43,21 +25,16 @@ func _process(delta):
 	_update_crosshair_position()
 
 func _update_crosshair_position():
-	print("UPDATE CROSSHAIR")
 	# Obtiene la posición actual del mouse y mueve la mira
 	var mouse_position = get_viewport().get_mouse_position()
 	position = mouse_position - size / 2
 
 # Método que será llamado por la señal del player para recibir la información del raycast
 func _on_update_ray_info(ray_result, delta):
-	print ("**************** _on_update_ray_info ****************")
 	if crosshair_sprite == null:
 		crosshair_sprite = $CenterContainer/Crosshair
-		print ("ACTUALIZA SPRITE")
 	if ray_result and ray_result.collider and ray_result.collider.is_in_group("Enemy"):
-		print ("DETECTA COLISION")
 		if target_enemy != ray_result.collider:
-			print ("DETECTA CAMBIO DE COLISION")
 			locked = false
 			# Nuevo objetivo detectado, reinicia el temporizador
 			target_enemy = ray_result.collider
@@ -68,10 +45,8 @@ func _on_update_ray_info(ray_result, delta):
 				return
 			# Incrementa el temporizador si sigue apuntando al mismo objetivo:
 			lock_timer += delta #get_process_delta_time()
-			print ("DELA TIME: ", get_process_delta_time())
 			if lock_timer >= lock_time:
 				locked = true
-				print ("TIEMPO DE COLISION TRANSCURRIDO: PASA A MIRA DE FIJACION")
 				$"../AnimationPlayer".play("locking")
 				# Objetivo fijado, cambia la apariencia de la mira
 				crosshair_sprite.texture = crosshair_lock_texture # Cambia la textura de la mira cuando el objetivo está fijado
@@ -87,7 +62,6 @@ func _reset_lock():
 	if crosshair_sprite == null:
 		crosshair_sprite = $CenterContainer/Crosshair
 	# Reinicia el estado de fijación
-	print ("REINICIA MIRA")
 	target_enemy = null
 	lock_timer = 0.0
 	crosshair_sprite.texture = crosshair_texture  # Cambia a la textura original

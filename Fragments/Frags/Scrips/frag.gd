@@ -20,7 +20,6 @@ func Start() -> void:
 	#material.albedo_color = $"../../..".color
 
 	var new_material = material.duplicate()
-	print ("MATERIAL: ", mesh_instance.get_active_material(0))
 	new_material.albedo_color = $"../../..".color
 	# Asignar el nuevo material al fragmento
 	mesh_instance.set_surface_override_material(0, new_material)

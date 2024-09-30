@@ -50,8 +50,8 @@ size = Vector3(0.83142, 0.438655, 0.240037)
 
 [node name="LongFragment" type="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.020752, 0, -0.125625)
-collision_layer = 5
-collision_mask = 5
+collision_layer = 4
+collision_mask = 4
 can_sleep = false
 
 [node name="fragment_4x8x3" type="MeshInstance3D" parent="."]
@@ -64,6 +64,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0106292, 0.000296995, 0.124
 shape = SubResource("BoxShape3D_oyduu")
 
 [node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0106018, 0.00244386, 0.123936)

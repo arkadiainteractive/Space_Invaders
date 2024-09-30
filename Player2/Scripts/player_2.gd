@@ -14,6 +14,7 @@ var missile_scene = load("res://Weapons/Missile/Scenes/missile.tscn")
 var fire_instance
 var missile_instance
 var missil_target = null
+var number_of_missile = 0
 
 signal update_ray_info(ray_result, delta)  # Definimos la señal para transmitir la información
 
@@ -62,7 +63,9 @@ func _process(delta):
 	if Input.is_action_just_pressed("alter_fire"):
 		if !missil_target:
 			return
+		number_of_missile +=1
 		missile_instance = missile_scene.instantiate()
+		missile_instance.set_id(number_of_missile)
 		var missile_scale = missile_instance.scale
 
 		# Colocar el misil en la posición y rotación del lanzador derecho
@@ -117,9 +120,6 @@ func orient_launcher(launcher: CharacterBody3D, target_position: Vector3, initia
 
 func _on_enemy_locked(target_enemy, delta):
 	missil_target = target_enemy
-	print ("************************* LISTO PARA DISPARAR MISIL: ", target_enemy)
-	print ("************************* POSICION: ", target_enemy.global_position)
 
 func _on_enemy_locked_loose():
 	missil_target = null
-	print ("************************* PERDIDA LA FIJACION")

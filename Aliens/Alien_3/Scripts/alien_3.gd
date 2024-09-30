@@ -12,7 +12,6 @@ func _ready() -> void:
 	mesh_instance = $RigidBody3D/Alien_3
 	material = mesh_instance.mesh.surface_get_material(0)
 	material.albedo_color = color
-	print ("COLOR: ", color)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
