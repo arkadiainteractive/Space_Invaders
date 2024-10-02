@@ -1,7 +1,7 @@
 extends Area3D
 
 # La fuerza de la explosión
-@export var explosion_force: float = 1000.0
+@export var explosion_force: float = 10000.0
 # El radio de la explosión
 @export var explosion_radius: float = 50.0
 # Duración de la explosión
@@ -11,8 +11,6 @@ func _ready() -> void:
 	$"../Fragments".connect("missile_explosion", _explosion_effector)
 
 func trigger_explosion():
-	print("EXPLOTA ESTA PUTA MIERDA")
-
 	# Obtén todos los cuerpos dentro del área
 	var bodies = get_overlapping_bodies()
 
@@ -21,16 +19,14 @@ func trigger_explosion():
 
 	for body in bodies:
 		if body is RigidBody3D:
-			print ("BODY: ", body.name)
 			# Calcula la dirección de la explosión desde el centro del área hacia el cuerpo
 			var direction = (body.global_transform.origin - global_transform.origin).normalized()
 			# Calcula la distancia al cuerpo
 			var distance = global_transform.origin.distance_to(body.global_transform.origin)
 			# Aplica una fuerza inversamente proporcional a la distancia
-			var force_magnitude = explosion_force #* (1.0 - (distance / explosion_radius))
+			var force_magnitude = explosion_force * (1.0 - (distance / explosion_radius))
 			# Aplica la fuerza al cuerpo
-			print ("FUERZA APLICADA: ", force_magnitude)
-			body.apply_impulse(Vector3(), direction * force_magnitude)
+			body.apply_force(direction * 100.0, Vector3.ZERO)
 
 # Método que se llama automáticamente cuando un cuerpo entra en el área
 func _explosion_effector():

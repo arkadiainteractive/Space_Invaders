@@ -39,6 +39,7 @@ blend_shape_mode = 0
 size = Vector3(2.31403, 1.81323, 1)
 
 [node name="Alien_4" type="RigidBody3D"]
+disable_mode = 2
 can_sleep = false
 script = ExtResource("1_gbhrm")
 

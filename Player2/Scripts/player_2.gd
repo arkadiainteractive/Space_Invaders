@@ -15,10 +15,7 @@ var fire_instance
 var missile_instance
 var missil_target = null
 var number_of_missile = 0
-
-signal update_ray_info(ray_result, delta)  # Definimos la señal para transmitir la información
-
-# Variables para almacenar la dirección inicial de los launchers
+signal update_ray_info(ray_result, delta)
 var left_launcher_initial_forward: Vector3
 var right_launcher_initial_forward: Vector3
 
@@ -45,7 +42,7 @@ func _process(delta):
 	# Obtener el estado del espacio para realizar la intersección
 	var space_state = get_world_3d().direct_space_state
 	var ray_result = space_state.intersect_ray(ray_query)
-	#print ("RAY: ", ray_result)
+
 	if ray_result:
 		var collider = ray_result.collider  # Obtener el objeto colisionado
 
@@ -71,7 +68,6 @@ func _process(delta):
 		# Colocar el misil en la posición y rotación del lanzador derecho
 		missile_instance.global_transform = right_launcher.global_transform
 		missile_instance.position = $RightLuncher/RightMissileSpot.global_position
-
 		# Obtener la dirección en la que apunta el lanzador y asignarla al misil
 		direction = right_launcher.global_transform.basis.z.normalized()
 
@@ -79,9 +75,7 @@ func _process(delta):
 
 		missile_instance.set_target(missil_target)
 		get_tree().current_scene.add_child(missile_instance)
-		#missile_instance.velocity = direction * 50
 
-	#if aim_control != null:
 	mouse_position = get_viewport().get_mouse_position()
 
 	from = camera.project_ray_origin(mouse_position)
@@ -109,7 +103,7 @@ func orient_launcher(launcher: CharacterBody3D, target_position: Vector3, initia
 		# Calcular la dirección limitada utilizando `slerp` para asegurarse de no exceder el límite
 		var clamped_direction = initial_forward.slerp(direction_to_target, max_rotation_angle / angle_to_target).normalized()
 
-		# Obtener la nueva posición objetivo limitada
+		# Obtener la nueva posición del objetivo (limitada)
 		var clamped_target_position = launcher.global_transform.origin + clamped_direction * 10  # Multiplica por la distancia deseada
 
 		# Aplicar la rotación con el límite

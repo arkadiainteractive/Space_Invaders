@@ -1,7 +1,7 @@
 extends CharacterBody3D
 class_name Missile
 
-@export var color = Color(0.8, 0.745, 0.443)
+@export var color = Color(1, 1, 1)
 
 const SPEED = 5.0
 const VELOCITY = 10

@@ -10,10 +10,9 @@ var crosshair_texture : Texture
 var locked : bool
 
 signal enemy_locked(enemy, delta)  # Señal que se emitirá cuando un enemigo sea fijado
-signal enemy_locked_loose()  # Señal que se emitirá cuando un enemigo sea fijado
+signal enemy_locked_loose()  # Señal de fijacion perdida.
 
 func _ready():
-	#self.enemy_lockedg.connect(%Player2.on_enemy_locked)
 
 	crosshair_sprite = $CenterContainer/Crosshair
 	crosshair_texture = load ("res://Aim/Sprites/Crosshair.png")
@@ -25,12 +24,15 @@ func _process(delta):
 	_update_crosshair_position()
 
 func _update_crosshair_position():
-	# Obtiene la posición actual del mouse y mueve la mira
+	#Obtiene la posición actual del mouse y mueve la mira
 	var mouse_position = get_viewport().get_mouse_position()
 	position = mouse_position - size / 2
 
-# Método que será llamado por la señal del player para recibir la información del raycast
+#Metodo que sera llamado por la señal del player para recibir la información del raycast
 func _on_update_ray_info(ray_result, delta):
+	if ray_result:
+		print ("NOMBRE DEL OBJETIVO: ",ray_result.collider.is_in_group("Enemy"))
+		print ("NOMBRE DEL OBJETIVO: ",ray_result.collider.name)
 	if crosshair_sprite == null:
 		crosshair_sprite = $CenterContainer/Crosshair
 	if ray_result and ray_result.collider and ray_result.collider.is_in_group("Enemy"):
@@ -50,7 +52,7 @@ func _on_update_ray_info(ray_result, delta):
 				$"../AnimationPlayer".play("locking")
 				# Objetivo fijado, cambia la apariencia de la mira
 				crosshair_sprite.texture = crosshair_lock_texture # Cambia la textura de la mira cuando el objetivo está fijado
-				#crosshair_sprite.modulate = Color(1, 1, 1)  # Cambia a rojo
+
 				emit_signal("enemy_locked", target_enemy, delta)  # Emite la señal con el objetivo fijado
 	else:
 		if target_enemy:

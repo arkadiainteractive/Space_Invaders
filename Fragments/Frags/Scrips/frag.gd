@@ -17,7 +17,8 @@ func Start() -> void:
 
 	mesh_instance = frag_instance.get_node("fragment_4x8x3")
 	material = mesh_instance.mesh.surface_get_material(0)
-	#material.albedo_color = $"../../..".color
+	material.albedo_color = $"../..".color
+	#var material = $"../..".get_surface_override_material(0) as ShaderMaterial
 
 	var new_material = material.duplicate()
 	#new_material.albedo_color = $"..".color

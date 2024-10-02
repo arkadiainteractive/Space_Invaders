@@ -250,3 +250,6 @@ explosion_radius = 500.0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.49185)
 shape = SubResource("SphereShape3D_bjjoq")
+
+[node name="ExplosionPosition" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.65158)

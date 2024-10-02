@@ -38,147 +38,146 @@ blend_shape_mode = 0
 [sub_resource type="BoxShape3D" id="BoxShape3D_sketp"]
 size = Vector3(2.31403, 1.81323, 1)
 
-[node name="Alien_3" type="Node3D"]
-script = ExtResource("1_j5lqj")
-
-[node name="Alien_3" type="RigidBody3D" parent="."]
+[node name="Alien_3" type="RigidBody3D"]
 can_sleep = false
+script = ExtResource("1_j5lqj")
+color = Color(1, 0, 0, 1)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Alien_3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00509769, 0.868324, 0.0579689)
 visible = false
 shape = SubResource("BoxShape3D_pwhol")
 
-[node name="Alien_3" type="MeshInstance3D" parent="Alien_3"]
+[node name="Alien_3" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, -4.37114e-09, 0.1, 0, -0.1, -4.37114e-09, 0, 0, 0)
 mesh = SubResource("ArrayMesh_bpcsp")
 skeleton = NodePath("")
 
-[node name="Area3D" type="Area3D" parent="Alien_3" groups=["Enemy"]]
+[node name="Area3D" type="Area3D" parent="." groups=["Enemy"]]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Alien_3/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000640869, 0.869263, 0)
 shape = SubResource("BoxShape3D_sketp")
 
-[node name="Fragments" type="Node3D" parent="Alien_3"]
+[node name="Fragments" type="Node3D" parent="."]
 script = ExtResource("2_sc1b5")
 
-[node name="Frag_1" type="Node3D" parent="Alien_3/Fragments"]
+[node name="Frag_1" type="Node3D" parent="Fragments"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.395577, 1.3692, 0.0581521)
 script = ExtResource("3_r7k5b")
 
-[node name="Frag_2" type="Node3D" parent="Alien_3/Fragments"]
+[node name="Frag_2" type="Node3D" parent="Fragments"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.389477, 1.3692, 0.0581521)
 script = ExtResource("3_r7k5b")
 
-[node name="Frag_3" type="Node3D" parent="Alien_3/Fragments"]
+[node name="Frag_3" type="Node3D" parent="Fragments"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.593009, 1.60666, 0.0581521)
 script = ExtResource("3_r7k5b")
 
-[node name="Frag_4" type="Node3D" parent="Alien_3/Fragments"]
+[node name="Frag_4" type="Node3D" parent="Fragments"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.603956, 1.60666, 0.0581521)
 script = ExtResource("3_r7k5b")
 
-[node name="Frag_5" type="Node3D" parent="Alien_3/Fragments"]
+[node name="Frag_5" type="Node3D" parent="Fragments"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.603956, 1.17052, 0.0581521)
 script = ExtResource("3_r7k5b")
 
-[node name="Frag_6" type="Node3D" parent="Alien_3/Fragments"]
+[node name="Frag_6" type="Node3D" parent="Fragments"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.405269, 1.17052, 0.0581521)
 script = ExtResource("3_r7k5b")
 
-[node name="Frag_7" type="Node3D" parent="Alien_3/Fragments"]
+[node name="Frag_7" type="Node3D" parent="Fragments"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.167814, 1.17052, 0.0581521)
 script = ExtResource("3_r7k5b")
 
-[node name="Frag_8" type="Node3D" parent="Alien_3/Fragments"]
+[node name="Frag_8" type="Node3D" parent="Fragments"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.147176, 1.17052, 0.0581521)
 script = ExtResource("3_r7k5b")
 
-[node name="Frag_9" type="Node3D" parent="Alien_3/Fragments"]
+[node name="Frag_9" type="Node3D" parent="Fragments"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.394323, 1.17052, 0.0581521)
 script = ExtResource("3_r7k5b")
 
-[node name="Frag_10" type="Node3D" parent="Alien_3/Fragments"]
+[node name="Frag_10" type="Node3D" parent="Fragments"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.593009, 1.17052, 0.0581521)
 script = ExtResource("3_r7k5b")
 
-[node name="Frag_11" type="Node3D" parent="Alien_3/Fragments"]
+[node name="Frag_11" type="Node3D" parent="Fragments"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.782003, 0.933064, 0.0581521)
 script = ExtResource("3_r7k5b")
 
-[node name="Frag_12" type="Node3D" parent="Alien_3/Fragments"]
+[node name="Frag_12" type="Node3D" parent="Fragments"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.583316, 0.933064, 0.0581521)
 script = ExtResource("3_r7k5b")
 
-[node name="Frag_13" type="Node3D" parent="Alien_3/Fragments"]
+[node name="Frag_13" type="Node3D" parent="Fragments"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.355554, 0.933064, 0.0581521)
 script = ExtResource("3_r7k5b")
 
-[node name="Frag_14" type="Node3D" parent="Alien_3/Fragments"]
+[node name="Frag_14" type="Node3D" parent="Fragments"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.156867, 0.933064, 0.0581521)
 script = ExtResource("3_r7k5b")
 
-[node name="Frag_15" type="Node3D" parent="Alien_3/Fragments"]
+[node name="Frag_15" type="Node3D" parent="Fragments"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.167817, 0.933064, 0.0581521)
 script = ExtResource("3_r7k5b")
 
-[node name="Frag_16" type="Node3D" parent="Alien_3/Fragments"]
+[node name="Frag_16" type="Node3D" parent="Fragments"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.400425, 0.933064, 0.0581521)
 script = ExtResource("3_r7k5b")
 
-[node name="Frag_17" type="Node3D" parent="Alien_3/Fragments"]
+[node name="Frag_17" type="Node3D" parent="Fragments"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.584574, 0.933064, 0.0581521)
 script = ExtResource("3_r7k5b")
 
-[node name="Frag_18" type="Node3D" parent="Alien_3/Fragments"]
+[node name="Frag_18" type="Node3D" parent="Fragments"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.773568, 0.933064, 0.0581521)
 script = ExtResource("3_r7k5b")
 
-[node name="Frag_19" type="Node3D" parent="Alien_3/Fragments"]
+[node name="Frag_19" type="Node3D" parent="Fragments"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.773568, 0.702311, 0.0581521)
 script = ExtResource("3_r7k5b")
 
-[node name="Frag_20" type="Node3D" parent="Alien_3/Fragments"]
+[node name="Frag_20" type="Node3D" parent="Fragments"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.556002, 0.702311, 0.0581521)
 script = ExtResource("3_r7k5b")
 
-[node name="Frag_21" type="Node3D" parent="Alien_3/Fragments"]
+[node name="Frag_21" type="Node3D" parent="Fragments"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.377993, 0.702311, 0.0581521)
 script = ExtResource("3_r7k5b")
 
-[node name="Frag_22" type="Node3D" parent="Alien_3/Fragments"]
+[node name="Frag_22" type="Node3D" parent="Fragments"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.167018, 0.702311, 0.0581521)
 script = ExtResource("3_r7k5b")
 
-[node name="Frag_23" type="Node3D" parent="Alien_3/Fragments"]
+[node name="Frag_23" type="Node3D" parent="Fragments"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.189001, 0.702311, 0.0581521)
 script = ExtResource("3_r7k5b")
 
-[node name="Frag_24" type="Node3D" parent="Alien_3/Fragments"]
+[node name="Frag_24" type="Node3D" parent="Fragments"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.426347, 0.702311, 0.0581521)
 script = ExtResource("3_r7k5b")
 
-[node name="Frag_25" type="Node3D" parent="Alien_3/Fragments"]
+[node name="Frag_25" type="Node3D" parent="Fragments"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.788959, 0.702311, 0.0581521)
 script = ExtResource("3_r7k5b")
 
-[node name="Frag_26" type="Node3D" parent="Alien_3/Fragments"]
+[node name="Frag_26" type="Node3D" parent="Fragments"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01966, 0.36395, 0.0581521)
 script = ExtResource("3_r7k5b")
 
-[node name="Frag_27" type="Node3D" parent="Alien_3/Fragments"]
+[node name="Frag_27" type="Node3D" parent="Fragments"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.02588, 0.36395, 0.0581521)
 script = ExtResource("3_r7k5b")
 
-[node name="Frag_28" type="Node3D" parent="Alien_3/Fragments"]
+[node name="Frag_28" type="Node3D" parent="Fragments"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.318402, 0.0640399, 0.0581521)
 script = ExtResource("3_r7k5b")
 
-[node name="Frag_29" type="Node3D" parent="Alien_3/Fragments"]
+[node name="Frag_29" type="Node3D" parent="Fragments"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28142, 0.0640399, 0.0581521)
 script = ExtResource("3_r7k5b")
 
-[connection signal="body_entered" from="Alien_3/Area3D" to="Alien_3/Fragments" method="_on_fatal_collision"]
+[connection signal="body_entered" from="Area3D" to="Fragments" method="_on_fatal_collision"]

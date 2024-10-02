@@ -1,0 +1,107 @@
+[gd_scene load_steps=10 format=3 uid="uid://jor4udawjpxt"]
+
+[ext_resource type="Script" path="res://Weapons/Missile/Scripts/explosion.gd" id="1_ww21j"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kfpu0"]
+transparency = 1
+albedo_color = Color(0.996078, 0, 0.0823529, 0)
+emission_enabled = true
+emission = Color(1, 0.290196, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_s6wbk"]
+material = SubResource("StandardMaterial3D_kfpu0")
+radius = 8.5
+height = 17.0
+
+[sub_resource type="Gradient" id="Gradient_01y2a"]
+offsets = PackedFloat32Array(0.235849, 0.561321, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.911798, 0.197945, 1.54018e-06, 1, 1, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vjooq"]
+seed = 564
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_elrip"]
+in_3d_space = true
+color_ramp = SubResource("Gradient_01y2a")
+noise = SubResource("FastNoiseLite_vjooq")
+
+[sub_resource type="Animation" id="Animation_fesnc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:mesh:material:albedo_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.996078, 0, 0.0823529, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yar5e"]
+resource_name = "explosion"
+length = 0.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.1, 0.1, 0.1), Vector3(1, 1, 1), Vector3(0.1, 0.1, 0.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:mesh:material:albedo_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0.996078, 0, 0.0823529, 0.0941176), Color(1, 0, 0, 0.0941176), Color(0.996078, 0, 0.0823529, 0.0941176), Color(0.996078, 0, 0.0823529, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hj1wc"]
+_data = {
+"RESET": SubResource("Animation_fesnc"),
+"explosion": SubResource("Animation_yar5e")
+}
+
+[node name="Explosion" type="MeshInstance3D"]
+mesh = SubResource("SphereMesh_s6wbk")
+script = ExtResource("1_ww21j")
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(10, -2.84217e-14, 0, 2.84217e-14, 10, 0, 0, 0, 10, 0, 0, 0)
+light_energy = 16.0
+light_indirect_energy = 16.0
+light_projector = SubResource("NoiseTexture2D_elrip")
+shadow_enabled = true
+omni_attenuation = -2.0
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hj1wc")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer2" to="." method="_on_animation_player_2_animation_finished"]
