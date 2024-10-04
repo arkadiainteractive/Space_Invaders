@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=4 uid="uid://colccl4i7stpi"]
 
-[ext_resource type="Script" path="res://Player/Scripts/player.gd" id="1_al2g1"]
-[ext_resource type="Texture2D" uid="uid://c21yf0oi0wcdg" path="res://Player/Models/player_0.png" id="1_njb7y"]
+[ext_resource type="Script" path="res://Shield/Player/Scripts/player.gd" id="1_al2g1"]
+[ext_resource type="Texture2D" uid="uid://c21yf0oi0wcdg" path="res://Shield/Player/Models/player_0.png" id="1_njb7y"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lqt87"]
 resource_name = "Material.1"

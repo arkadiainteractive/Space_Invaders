@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=4 uid="uid://c3mj0d5j3imru"]
+[gd_scene load_steps=11 format=4 uid="uid://c3mj0d5j3imru"]
 
 [ext_resource type="Texture2D" uid="uid://dfhn76iam1m7u" path="res://Fragments/BasicFragment/Models/fragment_2x2x2_0.png" id="1_hniki"]
+[ext_resource type="Script" path="res://Fragments/BasicFragment/Scripts/basic_fragment.gd" id="1_rvnh6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l1dl1"]
 resource_name = "Material.1"
@@ -46,11 +47,33 @@ size = Vector3(1.93463, 1.92194, 1.92181)
 [sub_resource type="BoxShape3D" id="BoxShape3D_l1u3v"]
 size = Vector3(0.239502, 0.244995, 0.234009)
 
-[node name="BasicFragment" type="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.020752, 0, -0.125625)
-collision_mask = 0
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_81abi"]
+lifetime_randomness = 0.5
+emission_shape = 1
+emission_sphere_radius = 0.1
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 10.0
+radial_accel_max = 10.0
 
-[node name="Layer_1" type="MeshInstance3D" parent="."]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2oslw"]
+transparency = 1
+blend_mode = 1
+vertex_color_use_as_albedo = true
+roughness = 0.0
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_k55ik"]
+material = SubResource("StandardMaterial3D_2oslw")
+radius = 0.05
+height = 0.1
+
+[node name="BasicFragment" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00897614, 0, -0.21451)
+collision_mask = 0
+script = ExtResource("1_rvnh6")
+
+[node name="fragment_2x2x2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.0199583, -0.0982566, 0.11975)
 mesh = SubResource("ArrayMesh_iba2c")
 skeleton = NodePath("")
@@ -65,3 +88,15 @@ shape = SubResource("BoxShape3D_s4ipt")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0194092, 0.000549316, 0.219543)
 shape = SubResource("BoxShape3D_l1u3v")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00876296, 0, 0.213814)
+amount = 400
+lifetime = 0.2
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_81abi")
+draw_pass_1 = SubResource("SphereMesh_k55ik")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://dratikhfx5imf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_64ge3"]
+size = Vector3(100, 0.1, 100)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mk5td"]
+size = Vector3(100, 0.1, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o3676"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(3.36915e-06, 0.629078, 0.397683, 1)
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_rsv7w"]
+material = SubResource("StandardMaterial3D_o3676")
+radius = 2.0
+height = 4.0
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.2968, 1.84934, 62.126)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_64ge3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D"]
+mesh = SubResource("BoxMesh_mk5td")
+skeleton = NodePath("../..")
+
+[node name="SoftBody3D" type="SoftBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.88028, -2.70333)
+mesh = SubResource("SphereMesh_rsv7w")
+total_mass = 1.01
+disable_mode = 1

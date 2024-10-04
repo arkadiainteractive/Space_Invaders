@@ -7,16 +7,15 @@ var material
 var color : Color
 
 func _ready() -> void:
-	frag_scene = load("res://Fragments/LongFragment/Scenes/long_fragment.tscn")
+	frag_scene = preload("res://Fragments/BasicFragment/Scenes/basic_fragment.tscn")
 	$"..".connect("missile_explosion", _on_missile_explosion_signal)
 
 func _on_missile_explosion_signal():
-	print ("--------------------------------------------------------- EXPLOSION ------------------------------------------------------------------")
 	frag_instance = frag_scene.instantiate()
 	frag_instance.position = global_position
 	apply_random_force(frag_instance)
 
-	mesh_instance = frag_instance.get_node("fragment_4x8x3")
+	mesh_instance = frag_instance.get_node("fragment_2x2x2")
 	material = mesh_instance.mesh.surface_get_material(0)
 	#material.albedo_color = $"../../..".color
 

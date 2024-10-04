@@ -6,7 +6,7 @@ var impact_counter = 0
 var critical_impacts
 
 @onready var explosion_scene = preload("res://Weapons/Missile/Scenes/explosion.tscn")
-var explosion_instance 
+var explosion_instance
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,7 +17,6 @@ func Destroy():
 	get_tree().root.add_child(explosion_instance) # Añádela como hijo del árbol de nodos
 	emit_signal("missile_explosion")
 	emit_signal("missile_destroyed")
-
 
 func _create_fragments(body: Node3D) -> void:
 	Destroy()

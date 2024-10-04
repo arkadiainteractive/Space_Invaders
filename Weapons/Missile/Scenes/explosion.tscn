@@ -63,10 +63,10 @@ tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.4, 0.593048, 0.725612),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0.1, 0.1, 0.1), Vector3(1, 1, 1), Vector3(0.1, 0.1, 0.1)]
+"values": [Vector3(0.1, 0.1, 0.1), Vector3(1, 1, 1), Vector3(1.5, 1.5, 1.5), Vector3(2, 2, 2)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -75,10 +75,10 @@ tracks/1/path = NodePath(".:mesh:material:albedo_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.588397, 0.730263),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(0.996078, 0, 0.0823529, 0.0941176), Color(1, 0, 0, 0.0941176), Color(0.996078, 0, 0.0823529, 0.0941176), Color(0.996078, 0, 0.0823529, 0)]
+"values": [Color(1, 1, 1, 0), Color(0.996078, 0, 0.0823529, 0.0941176), Color(1, 0, 0, 0.0941176), Color(0.996078, 0, 0.0823529, 0.0941176), Color(1, 1, 1, 0.0470588), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hj1wc"]
