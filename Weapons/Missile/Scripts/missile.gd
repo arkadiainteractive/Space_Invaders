@@ -14,6 +14,12 @@ var id = null
 func _ready() -> void:
 	$Fragments.connect("missile_destroyed", _on_missile_destroyed_signal)
 
+func set_color (new_color : Color):
+	color = new_color
+
+func get_color ():
+	return color
+
 func set_id(id_number: int):
 	id = id_number
 

@@ -1,11 +1,15 @@
-[gd_scene load_steps=11 format=4 uid="uid://c3mj0d5j3imru"]
+[gd_scene load_steps=18 format=4 uid="uid://c3mj0d5j3imru"]
 
-[ext_resource type="Texture2D" uid="uid://dfhn76iam1m7u" path="res://Fragments/BasicFragment/Models/fragment_2x2x2_0.png" id="1_hniki"]
 [ext_resource type="Script" path="res://Fragments/BasicFragment/Scripts/basic_fragment.gd" id="1_rvnh6"]
+[ext_resource type="Shader" path="res://GPUTrail-main/shaders/trail.gdshader" id="2_4k7tt"]
+[ext_resource type="Shader" path="res://GPUTrail-main/shaders/trail_draw_pass.gdshader" id="3_whwe8"]
+[ext_resource type="Texture2D" uid="uid://crk6pkb7e5rwc" path="res://GPUTrail-main/defaults/texture.tres" id="4_aglwl"]
+[ext_resource type="Texture2D" uid="uid://ct31fhxvcragr" path="res://GPUTrail-main/defaults/curve.tres" id="5_w7nfg"]
+[ext_resource type="Script" path="res://GPUTrail-main/GPUTrail3D.gd" id="6_n3d5a"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l1dl1"]
 resource_name = "Material.1"
-albedo_texture = ExtResource("1_hniki")
+vertex_color_use_as_albedo = true
 metallic = 0.2
 roughness = 0.5
 
@@ -49,28 +53,43 @@ size = Vector3(0.239502, 0.244995, 0.234009)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_81abi"]
 lifetime_randomness = 0.5
+particle_flag_rotate_y = true
 emission_shape = 1
 emission_sphere_radius = 0.1
 gravity = Vector3(0, 0, 0)
-radial_accel_min = 10.0
-radial_accel_max = 10.0
+radial_accel_min = -2.23517e-06
+radial_accel_max = 20.0
+attractor_interaction_enabled = false
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2oslw"]
-transparency = 1
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7qf1a"]
 blend_mode = 1
+shading_mode = 0
 vertex_color_use_as_albedo = true
-roughness = 0.0
-emission_enabled = true
-emission = Color(1, 1, 1, 1)
 
-[sub_resource type="SphereMesh" id="SphereMesh_k55ik"]
-material = SubResource("StandardMaterial3D_2oslw")
-radius = 0.05
-height = 0.1
+[sub_resource type="QuadMesh" id="QuadMesh_uds12"]
+material = SubResource("StandardMaterial3D_7qf1a")
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r53si"]
+shader = ExtResource("2_4k7tt")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bxkit"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_whwe8")
+shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+shader_parameter/flags = 40
+shader_parameter/color_ramp = ExtResource("4_aglwl")
+shader_parameter/curve = ExtResource("5_w7nfg")
+
+[sub_resource type="QuadMesh" id="QuadMesh_6pmkd"]
+material = SubResource("ShaderMaterial_bxkit")
+size = Vector2(0.1, 0.1)
 
 [node name="BasicFragment" type="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00897614, 0, -0.21451)
 collision_mask = 0
+can_sleep = false
 script = ExtResource("1_rvnh6")
 
 [node name="fragment_2x2x2" type="MeshInstance3D" parent="."]
@@ -93,10 +112,25 @@ shape = SubResource("BoxShape3D_l1u3v")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00876296, 0, 0.213814)
+visible = false
+layers = 129
 amount = 400
 lifetime = 0.2
-randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_81abi")
-draw_pass_1 = SubResource("SphereMesh_k55ik")
+draw_pass_1 = SubResource("QuadMesh_uds12")
+
+[node name="GPUTrail3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.00715649, 0, 0.214697)
+amount = 130
+lifetime = 130.0
+explosiveness = 1.0
+fixed_fps = 0
+process_material = SubResource("ShaderMaterial_r53si")
+draw_pass_1 = SubResource("QuadMesh_6pmkd")
+script = ExtResource("6_n3d5a")
+length = 130
+color_ramp = ExtResource("4_aglwl")
+curve = ExtResource("5_w7nfg")
+_defaults_have_been_set = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
