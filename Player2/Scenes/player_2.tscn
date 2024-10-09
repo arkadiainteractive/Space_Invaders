@@ -225,3 +225,9 @@ skeleton = NodePath("")
 
 [node name="RightMissileSpot" type="Node3D" parent="RightLuncher"]
 transform = Transform3D(10, 0, 1.59162e-12, 0, 10, 0, -1.59162e-12, 0, 10, -0.720147, -5.58472, 8.62149)
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

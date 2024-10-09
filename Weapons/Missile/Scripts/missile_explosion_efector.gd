@@ -1,7 +1,7 @@
 extends Area3D
 
 # La fuerza de la explosión
-@export var explosion_force: float = 10000.0
+@export var explosion_force: float = 1000000.0
 # El radio de la explosión
 @export var explosion_radius: float = 50.0
 # Duración de la explosión

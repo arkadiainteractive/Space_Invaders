@@ -48,7 +48,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00509769, 0.868324, 0.0579
 visible = false
 shape = SubResource("BoxShape3D_pwhol")
 
-[node name="Alien_3" type="MeshInstance3D" parent="."]
+[node name="Alien" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, -4.37114e-09, 0.1, 0, -0.1, -4.37114e-09, 0, 0, 0)
 mesh = SubResource("ArrayMesh_bpcsp")
 skeleton = NodePath("")

@@ -19,6 +19,8 @@ func _ready():
 	crosshair_sprite = $CenterContainer/Crosshair
 	crosshair_texture = load("res://Aim/Sprites/Crosshair.png")
 	crosshair_lock_texture = load("res://Aim/Sprites/Locking_crosshair.png")
+	#Player2.reset_aim.connect(_reset_aim)
+	
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	_update_crosshair_position()
 
@@ -74,6 +76,12 @@ func _change_state(new_state):
 func _on_animation_finished(anim_name):
 	if anim_name == "locking" and crosshair_state == CrosshairState.LOCKING:
 		_change_state(CrosshairState.LOCKED)
+
+func _reset_aim():
+	_change_state(CrosshairState.UNLOCKED)
+	target_enemy = null
+	lock_timer = 0.0
+	#crosshair_sprite.modulate = Color(1, 1, 1)
 
 func _reset_lock():
 	emit_signal("enemy_locked_loose")

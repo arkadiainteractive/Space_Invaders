@@ -15,11 +15,17 @@ var fire_instance
 var missile_instance
 var missil_target = null
 var number_of_missile = 0
+var missile_mode = false
 signal update_ray_info(ray_result, delta)
+signal reset_aim
 var left_launcher_initial_forward: Vector3
 var right_launcher_initial_forward: Vector3
+var fire_ready = true
+var timer : Timer
 
 func _ready():
+	timer = $Timer
+	self.reset_aim.connect(%Aim/%AimControl._reset_aim)
 	self.update_ray_info.connect(%Aim/%AimControl._on_update_ray_info)
 	%Aim/%AimControl.enemy_locked.connect(_on_enemy_locked)
 	%Aim/%AimControl.enemy_locked_loose.connect(_on_enemy_locked_loose)
@@ -47,9 +53,14 @@ func _process(delta):
 		var collider = ray_result.collider  # Obtener el objeto colisionado
 
 	# Emitir la señal con la información del raycast
-	emit_signal("update_ray_info", ray_result, delta)
+	if missile_mode:
+		emit_signal("update_ray_info", ray_result, delta)
 
 	if Input.is_action_just_pressed("fire"):
+		if not fire_ready:
+			return
+		fire_ready = false
+		timer.start()
 		fire_instance = fire_scene.instantiate()
 		fire_instance.position = $Cannon/FireSpot.global_position
 
@@ -58,23 +69,28 @@ func _process(delta):
 		fire_instance.velocity = direction * 50
 
 	if Input.is_action_just_pressed("alter_fire"):
-		if !missil_target:
-			return
-		number_of_missile +=1
-		missile_instance = missile_scene.instantiate()
-		missile_instance.set_id(number_of_missile)
-		var missile_scale = missile_instance.scale
+		if not missile_mode:
+			missile_mode = true
+		else:
+			if !missil_target:
+				return
+			number_of_missile +=1
+			missile_instance = missile_scene.instantiate()
+			missile_instance.set_id(number_of_missile)
+			var missile_scale = missile_instance.scale
 
-		# Colocar el misil en la posición y rotación del lanzador derecho
-		missile_instance.global_transform = right_launcher.global_transform
-		missile_instance.position = $RightLuncher/RightMissileSpot.global_position
-		# Obtener la dirección en la que apunta el lanzador y asignarla al misil
-		direction = right_launcher.global_transform.basis.z.normalized()
+			# Colocar el misil en la posición y rotación del lanzador derecho
+			missile_instance.global_transform = right_launcher.global_transform
+			missile_instance.position = $RightLuncher/RightMissileSpot.global_position
+			# Obtener la dirección en la que apunta el lanzador y asignarla al misil
+			direction = right_launcher.global_transform.basis.z.normalized()
 
-		missile_instance.scale = -missile_scale
+			missile_instance.scale = -missile_scale
 
-		missile_instance.set_target(missil_target)
-		get_tree().current_scene.add_child(missile_instance)
+			missile_instance.set_target(missil_target)
+			get_tree().current_scene.add_child(missile_instance)
+			missile_mode = false
+			emit_signal("reset_aim")
 
 	mouse_position = get_viewport().get_mouse_position()
 
@@ -116,4 +132,9 @@ func _on_enemy_locked(target_enemy, delta):
 	missil_target = target_enemy
 
 func _on_enemy_locked_loose():
+	missile_mode = false
 	missil_target = null
+
+
+func _on_timer_timeout() -> void:
+	fire_ready = true
