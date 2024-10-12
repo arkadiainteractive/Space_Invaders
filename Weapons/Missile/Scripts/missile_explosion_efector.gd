@@ -1,7 +1,7 @@
 extends Area3D
 
 # La fuerza de la explosión
-@export var explosion_force: float = 1000000.0
+@export var explosion_force: float = 10000.0
 # El radio de la explosión
 @export var explosion_radius: float = 50.0
 # Duración de la explosión
@@ -19,6 +19,8 @@ func trigger_explosion():
 
 	for body in bodies:
 		if body is RigidBody3D:
+			if body.is_in_group("Enemy"):
+				body.impact(110)
 			# Calcula la dirección de la explosión desde el centro del área hacia el cuerpo
 			var direction = (body.global_transform.origin - global_transform.origin).normalized()
 			# Calcula la distancia al cuerpo

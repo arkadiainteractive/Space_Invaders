@@ -38,7 +38,7 @@ blend_shape_mode = 0
 [sub_resource type="BoxShape3D" id="BoxShape3D_sketp"]
 size = Vector3(2.31403, 1.81323, 1)
 
-[node name="Alien_4" type="RigidBody3D"]
+[node name="Alien_4" type="RigidBody3D" groups=["Enemy"]]
 disable_mode = 2
 can_sleep = false
 script = ExtResource("1_gbhrm")

@@ -1,7 +1,12 @@
-[gd_scene load_steps=13 format=4 uid="uid://ba2xc6fktv5ap"]
+[gd_scene load_steps=21 format=4 uid="uid://ba2xc6fktv5ap"]
 
 [ext_resource type="Script" path="res://Weapons/Fire/Scripts/fire.gd" id="1_pn776"]
 [ext_resource type="Texture2D" uid="uid://dqggxeg1m6lpo" path="res://Weapons/Fire/Models/fire_0.png" id="2_c0y0u"]
+[ext_resource type="Shader" path="res://GPUTrail-main/shaders/trail.gdshader" id="3_a7u18"]
+[ext_resource type="Shader" path="res://GPUTrail-main/shaders/trail_draw_pass.gdshader" id="4_pim8p"]
+[ext_resource type="Texture2D" uid="uid://crk6pkb7e5rwc" path="res://GPUTrail-main/defaults/texture.tres" id="5_jqdvk"]
+[ext_resource type="Texture2D" uid="uid://ct31fhxvcragr" path="res://GPUTrail-main/defaults/curve.tres" id="6_4km7n"]
+[ext_resource type="Script" path="res://GPUTrail-main/GPUTrail3D.gd" id="7_k5lqk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_75hv3"]
 size = Vector3(0.413253, 0.425026, 0.427791)
@@ -71,6 +76,21 @@ color_ramp = SubResource("GradientTexture1D_h6ccu")
 
 [sub_resource type="BoxMesh" id="BoxMesh_vapf0"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_strui"]
+shader = ExtResource("3_a7u18")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4lt4f"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("4_pim8p")
+shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+shader_parameter/flags = 4
+shader_parameter/color_ramp = ExtResource("5_jqdvk")
+shader_parameter/curve = ExtResource("6_4km7n")
+
+[sub_resource type="QuadMesh" id="QuadMesh_2rv5c"]
+material = SubResource("ShaderMaterial_4lt4f")
+
 [node name="Fire" type="CharacterBody3D"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.397282, -0.196749)
 collision_layer = 2
@@ -82,11 +102,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.188213, 0.397242, 0.001048
 shape = SubResource("BoxShape3D_75hv3")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="CollisionShape3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0079346, 0, 3.49246e-10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.555298, 0, -2.42144e-08)
 light_color = Color(1, 0, 0, 1)
 light_energy = 16.0
 light_indirect_energy = 16.0
 light_size = 1.0
+omni_attenuation = 10.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.501545, 0, 2.21189e-08)
+light_color = Color(1, 0, 0, 1)
+light_energy = 16.0
+light_indirect_energy = 16.0
+light_size = 1.0
+omni_attenuation = 10.0
 
 [node name="Fire" type="MeshInstance3D" parent="CollisionShape3D"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.00038109, -0.401994, -0.201018)
@@ -95,14 +124,43 @@ skeleton = NodePath("")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00212176, 4.1455e-05, -0.0010481)
+visible = false
 amount = 20000
 lifetime = 0.5
 trail_lifetime = 2.73
 process_material = SubResource("ParticleProcessMaterial_lmqqr")
 draw_pass_1 = SubResource("BoxMesh_vapf0")
 
+[node name="SpotLight3D" type="SpotLight3D" parent="CollisionShape3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.263614, 0.0102731, -0.00119287)
+visible = false
+light_energy = 16.0
+light_size = 1.0
+light_specular = 16.0
+spot_range = 20.0
+spot_attenuation = -10.0
+spot_angle = 15.0
+
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="GPUTrail3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.188213, 0.397242, 0.00104809)
+amount = 30
+lifetime = 30.0
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 0
+process_material = SubResource("ShaderMaterial_strui")
+draw_pass_1 = SubResource("QuadMesh_2rv5c")
+script = ExtResource("7_k5lqk")
+length = 30
+color_ramp = ExtResource("5_jqdvk")
+curve = ExtResource("6_4km7n")
+billboard = true
+dewiggle = false
+clip_overlaps = false
+_defaults_have_been_set = true
 
 [node name="Area3D" type="Area3D" parent="."]
 

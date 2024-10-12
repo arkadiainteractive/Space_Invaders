@@ -15,6 +15,8 @@ var bomb_delay: float = 2.0
 var shoot_delay: float = 3.0
 var bomb_velocity: Vector3 = Vector3(0, -10, 0) # Velocidad de la bomba hacia abajo
 var shoot_velocity: Vector3 = Vector3(0, 0, -20) # Velocidad del disparo hacia el cañón
+var shocked : bool = false
+var impact_timer
 
 # Tiempo para controlar los ataques
 var bomb_timer: float = 0.0
@@ -28,6 +30,14 @@ var displaced: bool = false
 
 # Inicializamos el NPC
 func _ready():
+	#impact_timer = $Impact_timer
+	impact_timer = Timer.new()
+	impact_timer.one_shot = true
+	add_child(impact_timer)
+
+	# Conectar la señal 'timeout' a una función en el script
+	impact_timer.timeout.connect(_impact_timeout)
+
 	initial_position = global_position
 	initial_rotation = global_transform.basis  # Guardamos la orientación inicial
 	bomb_timer = bomb_delay
@@ -41,6 +51,15 @@ func _ready():
 
 func Destroy():
 	queue_free()
+
+func impact(impact_force: int):
+	if impact_force > 100:
+		print ("RECIBE SHOCK")
+		impact_timer.start(2)
+		shocked = true
+
+func _impact_timeout():
+	shocked = false
 
 # Control del NPC en cada frame
 func _process(delta):
@@ -79,6 +98,8 @@ func move_laterally(delta):
 
 # Función para volver a la posición inicial si fue desplazado
 func return_to_initial_position(delta):
+	if shocked:
+		return
 	# Calculamos la diferencia entre la posición actual y la posición inicial
 	var diff = initial_position - global_position
 
