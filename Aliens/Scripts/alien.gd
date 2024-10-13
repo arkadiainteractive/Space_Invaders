@@ -5,6 +5,9 @@ class_name Alien
 var mesh_instance
 var material
 @export var color = Color(0.821, 0.555, 0.66)
+var path_follow: PathFollow3D
+
+@export var speed: float = 0.1
 
 # Variables para el comportamiento de los NPC
 var initial_position: Vector3
@@ -28,9 +31,20 @@ var player_cannon: Node3D
 # Para saber si ha sido desplazado y debe volver a la posición original
 var displaced: bool = false
 
+func print_paths(node: Node):
+	# Imprimir el path completo del nodo actual
+	print("Node path: ", node.get_path())
+
+	# Iterar sobre todos los hijos del nodo actual
+	for child in node.get_children():
+		print_paths(child)  # Llamada recursiva para imprimir los paths de los hijos
+
 # Inicializamos el NPC
 func _ready():
-	#impact_timer = $Impact_timer
+#	/root/Alien_1/Path3D/PathFollow3D
+	path_follow = get_node("/root/Level_1/Alien_1/Path3D/PathFollow3D")
+	var path_node = get_tree().root
+	print_paths(path_node)
 	impact_timer = Timer.new()
 	impact_timer.one_shot = true
 	add_child(impact_timer)
@@ -83,6 +97,11 @@ func _process(delta):
 	# Si el NPC fue desplazado, que vuelva a su posición
 	if displaced:
 		return_to_initial_position(delta)
+
+	_alien_process(delta)
+
+func _alien_process(delta):
+	pass
 
 # Función para mover lateralmente al NPC
 func move_laterally(delta):
