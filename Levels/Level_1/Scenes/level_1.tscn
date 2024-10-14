@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://6bexoj0gd8qn"]
+[gd_scene load_steps=16 format=3 uid="uid://6bexoj0gd8qn"]
 
 [ext_resource type="PackedScene" uid="uid://dopa88phf7x81" path="res://Aliens/Alien_1/Scenes/alien_1.tscn" id="1_kxlt4"]
 [ext_resource type="PackedScene" uid="uid://cgq5k1nvd1p8m" path="res://Aliens/Alien_2/Scenes/alien_2.tscn" id="2_g4jpc"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ipp4vrrx1o8q" path="res://Aliens/Weapons/Missile_1/Scenes/missile_1.tscn" id="7_w8aqr"]
 [ext_resource type="PackedScene" uid="uid://da8muyjhbfw7s" path="res://Weapons/Bomb_1/Scenes/bomb_1.tscn" id="8_fvo04"]
 [ext_resource type="PackedScene" uid="uid://bl3bojtrq50h" path="res://Aliens/Weapons/Bomb_1/Models/alien_bomb_1.tscn" id="9_nupta"]
+[ext_resource type="PackedScene" uid="uid://bnq02mm8mwmpf" path="res://Buildings/Scenes/building_1.tscn" id="10_xtydf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i866c"]
 
@@ -73,3 +74,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12.72
 light_color = Color(0.895903, 0.956906, 0.421604, 1)
 
 [node name="Alien_Bomb_1" parent="." instance=ExtResource("9_nupta")]
+
+[node name="Building_1" parent="." instance=ExtResource("10_xtydf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.16775, 0, -12)

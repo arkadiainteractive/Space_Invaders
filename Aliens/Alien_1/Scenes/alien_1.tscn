@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Fragments/Frags/Scrips/frag.gd" id="4_k05d5"]
 
 [sub_resource type="Curve3D" id="Curve3D_qde6e"]
+bake_interval = 0.1
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.00369263, -0.00415039, 0.000854492, 0, 0, 0, 0, 0, 0, -11.4519, -6.82376, -0.712524, 0, 0, 0, 0, 0, 0, 5.4942, -6.99998, 0.0943604, 0, 0, 0, 0, 0, 0, 8.90619, -4.16286, 0.369873, 0, 0, 0, 0, 0, 0, 5.58875, -0.984035, 2.61682, 0, 0, 0, 0, 0, 0, 3.61829, -0.0731697, 3.98804, 0, 0, 0, 0, 0, 0, 0.383442, 0.346573, 4.02734, 0, 0, 0, 0, 0, 0, 0.537231, 0.97583, 3.83728, 0, 0, 0, 0, 0, 0, 0.2612, 0.84375, 1.35754),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
@@ -54,13 +55,15 @@ size = Vector3(2.75825, 1.85467, 0.753174)
 curve = SubResource("Curve3D_qde6e")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(0.0621524, -0.509809, 0.858038, 2.98021e-08, 0.859699, 0.510797, -0.998059, -0.0317475, 0.0534329, 0.00369263, -0.00415039, 0.000854492)
+transform = Transform3D(0.0621524, -0.509808, 0.858037, 2.98021e-08, 0.859697, 0.510797, -0.998058, -0.0317474, 0.0534328, 0.00369263, -0.00415039, 0.000854492)
 
 [node name="Alien_1" type="RigidBody3D" parent="Path3D/PathFollow3D" groups=["Enemy"]]
 transform = Transform3D(0.0621534, 2.98026e-08, -0.998074, -0.509811, 0.859703, -0.0317476, 0.85804, 0.510798, 0.053433, 0.000623337, 0.00547777, -0.00109407)
 can_sleep = false
 script = ExtResource("1_a0yc0")
 color = Color(0.8, 0.745098, 0.443137, 1)
+attack_interval_min = 10.0
+attack_interval_max = 35.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D/PathFollow3D/Alien_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00537109, 0.835449, 0.0482178)
@@ -187,4 +190,5 @@ script = ExtResource("4_k05d5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.501093, 0.285984, 0.0355073)
 script = ExtResource("4_k05d5")
 
+[connection signal="ready" from="Path3D/PathFollow3D" to="Path3D/PathFollow3D/Alien_1" method="_on_a_lien_1_path_follow_3d_ready"]
 [connection signal="body_entered" from="Path3D/PathFollow3D/Alien_1/Area3D" to="Path3D/PathFollow3D/Alien_1/Fragments" method="_on_fatal_collision"]

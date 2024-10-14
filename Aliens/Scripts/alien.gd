@@ -8,6 +8,10 @@ var material
 var path_follow: PathFollow3D
 
 @export var speed: float = 0.1
+@export var attack_interval_min: float = 30.0  # Valor mínimo del rango
+@export var attack_interval_max: float = 40.0  # Valor máximo del rango
+var next_attack_time: float = 0.0
+var attack_timer : float = 0.0
 
 # Variables para el comportamiento de los NPC
 var initial_position: Vector3
@@ -20,6 +24,7 @@ var bomb_velocity: Vector3 = Vector3(0, -10, 0) # Velocidad de la bomba hacia ab
 var shoot_velocity: Vector3 = Vector3(0, 0, -20) # Velocidad del disparo hacia el cañón
 var shocked : bool = false
 var impact_timer
+var attack_mode : bool = false
 
 # Tiempo para controlar los ataques
 var bomb_timer: float = 0.0
@@ -37,14 +42,13 @@ func print_paths(node: Node):
 
 	# Iterar sobre todos los hijos del nodo actual
 	for child in node.get_children():
-		print_paths(child)  # Llamada recursiva para imprimir los paths de los hijos
+		print_paths(child)
+# Inicializamos el NPC # Llamada recursiva para imprimir los paths de los hijos
 
-# Inicializamos el NPC
 func _ready():
-#	/root/Alien_1/Path3D/PathFollow3D
-	path_follow = get_node("/root/Level_1/Alien_1/Path3D/PathFollow3D")
+	#path_follow = get_node("/root/Level_1/Alien_1/Path3D/PathFollow3D")
 	var path_node = get_tree().root
-	print_paths(path_node)
+	#print_paths(path_node)
 	impact_timer = Timer.new()
 	impact_timer.one_shot = true
 	add_child(impact_timer)
@@ -63,6 +67,9 @@ func _ready():
 	material = mesh_instance.mesh.surface_get_material(0)
 	material.albedo_color = color
 
+	next_attack_time = randf_range(attack_interval_min, attack_interval_max)
+	print (self.name, " TIEMPO ANTES DE ATAQUE: ", next_attack_time)
+
 func Destroy():
 	queue_free()
 
@@ -79,14 +86,14 @@ func _impact_timeout():
 func _process(delta):
 	# Movimiento lateral continuo
 	move_laterally(delta)
-	
+
 	# Ataque de bombardeo (hacia abajo)
 	if bomb_timer <= 0:
 		#shoot_bomb()
 		bomb_timer = bomb_delay
 	else:
 		bomb_timer -= delta
-	
+
 	# Ataque dirigido al cañón del jugador
 	if shoot_timer <= 0:
 		#shoot_at_player()
@@ -98,10 +105,33 @@ func _process(delta):
 	if displaced:
 		return_to_initial_position(delta)
 
+	if not attack_mode:
+		attack_timer += delta
+		if attack_timer >= next_attack_time:
+			print(self.name, " ¡Ataque!")
+			attack_timer = 0.0  # Reiniciar el temporizador
+			next_attack_time = randf_range(attack_interval_min, attack_interval_max)
+			attack_mode = true
+	else:
+		attack(delta)
+
 	_alien_process(delta)
 
 func _alien_process(delta):
 	pass
+
+func attack(delta):
+	# Incrementamos el progreso de la nave en la ruta
+	path_follow.progress_ratio += speed * delta
+	print(self.name, " PATH: ", path_follow.progress_ratio)
+
+	# Reiniciar el progreso cuando llega al final para hacer un bucle
+	if path_follow.progress_ratio >= 0.998 or is_equal_approx(path_follow.progress_ratio, 1.0):
+		print (self.name, " FIN DE ATAQUE!")
+		attack_mode = false
+		path_follow.progress_ratio = 0.0  # Repetir el recorrido
+	else:
+		path_follow.progress_ratio = clamp(path_follow.progress_ratio, 0.0, 1.0)
 
 # Función para mover lateralmente al NPC
 func move_laterally(delta):
