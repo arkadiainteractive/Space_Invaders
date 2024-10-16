@@ -19,7 +19,6 @@ func _ready():
 	crosshair_sprite = $CenterContainer/Crosshair
 	crosshair_texture = load("res://Aim/Sprites/Crosshair.png")
 	crosshair_lock_texture = load("res://Aim/Sprites/Locking_crosshair.png")
-	#Player2.reset_aim.connect(_reset_aim)
 
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	_update_crosshair_position()

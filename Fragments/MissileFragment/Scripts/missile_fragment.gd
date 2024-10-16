@@ -1,4 +1,4 @@
-extends RigidBody3D
+class_name Missile_fragment extends RigidBody3D
 
 @onready var timer = $Timer
 var color = Color (1,1,1)

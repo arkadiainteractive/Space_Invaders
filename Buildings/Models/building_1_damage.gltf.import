@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b0nqk40of540u"
-path="res://.godot/imported/fragment_2x2x2.gltf-e61454e2eff35cb0275508148a88f2a2.scn"
+uid="uid://cdxygjx26csi5"
+path="res://.godot/imported/building_1_damage.gltf-88673f6bf4e264b07254d9258be43984.scn"
 
 [deps]
 
-source_file="res://Fragments/BasicFragment/Models/fragment_2x2x2.gltf"
-dest_files=["res://.godot/imported/fragment_2x2x2.gltf-e61454e2eff35cb0275508148a88f2a2.scn"]
+source_file="res://Buildings/Models/building_1_damage.gltf"
+dest_files=["res://.godot/imported/building_1_damage.gltf-88673f6bf4e264b07254d9258be43984.scn"]
 
 [params]
 

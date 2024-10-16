@@ -38,3 +38,6 @@ func _on_timer_timeout() -> void:
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	queue_free()
+
+func Destroy():
+	pass

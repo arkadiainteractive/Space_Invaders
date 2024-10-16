@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dfhn76iam1m7u"
-path.s3tc="res://.godot/imported/fragment_2x2x2_0.png-a4448c4073579cb0b5c5147e66edc28c.s3tc.ctex"
+path.s3tc="res://.godot/imported/fragment_2x2x2_0.png-a7834e7d8c022392572ba1b1c8f616ec.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Fragments/BasicFragment/Models/fragment_2x2x2_0.png"
-dest_files=["res://.godot/imported/fragment_2x2x2_0.png-a4448c4073579cb0b5c5147e66edc28c.s3tc.ctex"]
+source_file="res://Fragments/MissileFragment/Models/fragment_2x2x2_0.png"
+dest_files=["res://.godot/imported/fragment_2x2x2_0.png-a7834e7d8c022392572ba1b1c8f616ec.s3tc.ctex"]
 
 [params]
 

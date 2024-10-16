@@ -7,7 +7,7 @@ var material
 var color : Color = Color (1, 1, 1)
 
 func _ready() -> void:
-	frag_scene = preload("res://Fragments/BasicFragment/Scenes/basic_fragment.tscn")
+	frag_scene = preload("res://Fragments/MissileFragment/Scenes/missile_fragment.tscn")
 	$"..".connect("missile_explosion", _on_missile_explosion_signal)
 	set_color ($"../..".get_color())
 

@@ -15,7 +15,7 @@ func Start() -> void:
 	frag_instance.position = global_position
 	apply_random_force(frag_instance)
 
-	mesh_instance = frag_instance.get_node("fragment_4x8x3")
+	mesh_instance = frag_instance.get_node("fragment")
 	material = mesh_instance.mesh.surface_get_material(0)
 	material.albedo_color = $"../..".color
 	#var material = $"../..".get_surface_override_material(0) as ShaderMaterial

@@ -25,6 +25,8 @@ var shoot_velocity: Vector3 = Vector3(0, 0, -20) # Velocidad del disparo hacia e
 var shocked : bool = false
 var impact_timer
 var attack_mode : bool = false
+var bomb_1_scenne = load ("res://Aliens/Weapons/Bomb_1/Scenes/alien_bomb_1.tscn")
+var bomb_dropped : bool = false
 
 # Tiempo para controlar los ataques
 var bomb_timer: float = 0.0
@@ -37,9 +39,6 @@ var player_cannon: Node3D
 var displaced: bool = false
 
 func print_paths(node: Node):
-	# Imprimir el path completo del nodo actual
-	print("Node path: ", node.get_path())
-
 	# Iterar sobre todos los hijos del nodo actual
 	for child in node.get_children():
 		print_paths(child)
@@ -68,14 +67,12 @@ func _ready():
 	material.albedo_color = color
 
 	next_attack_time = randf_range(attack_interval_min, attack_interval_max)
-	print (self.name, " TIEMPO ANTES DE ATAQUE: ", next_attack_time)
 
 func Destroy():
 	queue_free()
 
 func impact(impact_force: int):
 	if impact_force > 100:
-		print ("RECIBE SHOCK")
 		impact_timer.start(2)
 		shocked = true
 
@@ -108,7 +105,6 @@ func _process(delta):
 	if not attack_mode:
 		attack_timer += delta
 		if attack_timer >= next_attack_time:
-			print(self.name, " ¡Ataque!")
 			attack_timer = 0.0  # Reiniciar el temporizador
 			next_attack_time = randf_range(attack_interval_min, attack_interval_max)
 			attack_mode = true
@@ -121,17 +117,25 @@ func _alien_process(delta):
 	pass
 
 func attack(delta):
+	if Input.is_key_pressed(KEY_B):
+		if not bomb_dropped:
+			bomb_dropped = true
+			drop_bomb()
 	# Incrementamos el progreso de la nave en la ruta
 	path_follow.progress_ratio += speed * delta
-	print(self.name, " PATH: ", path_follow.progress_ratio)
 
 	# Reiniciar el progreso cuando llega al final para hacer un bucle
 	if path_follow.progress_ratio >= 0.998 or is_equal_approx(path_follow.progress_ratio, 1.0):
-		print (self.name, " FIN DE ATAQUE!")
 		attack_mode = false
 		path_follow.progress_ratio = 0.0  # Repetir el recorrido
 	else:
 		path_follow.progress_ratio = clamp(path_follow.progress_ratio, 0.0, 1.0)
+
+func drop_bomb():
+	var root_node = get_tree().current_scene
+	var bomb = bomb_1_scenne.instantiate()
+	bomb.global_position = global_position
+	root_node.add_child(bomb)
 
 # Función para mover lateralmente al NPC
 func move_laterally(delta):
@@ -168,7 +172,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D):
 	# Detectamos si fue desplazado de su posición original
 	if global_position.distance_to(initial_position) > 5.0:  # Asume que si está a más de 5 unidades fue desplazado
 		displaced = true
-	
+
 	# Verificamos si la rotación ha cambiado y corregimos la orientación
 	var current_rotation = global_transform.basis
 	if not current_rotation.is_equal_approx(initial_rotation):
