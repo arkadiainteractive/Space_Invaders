@@ -28,7 +28,7 @@ func trigger_explosion():
 			# Aplica una fuerza inversamente proporcional a la distancia
 			var force_magnitude = explosion_force * (1.0 - (distance / explosion_radius))
 			# Aplica la fuerza al cuerpo
-			body.apply_force(direction * 100.0, Vector3.ZERO)
+			body.apply_force(direction * 100.0, Vector3.ZERO) #force_magnitude
 
 # Método que se llama automáticamente cuando un cuerpo entra en el área
 func _explosion_effector():

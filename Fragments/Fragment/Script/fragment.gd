@@ -20,4 +20,9 @@ func get_color ():
 	return color
 
 func _on_timer_timeout() -> void:
-	queue_free()
+	hide()
+	#queue_free()
+
+func is_hidden():
+	if !visible:
+		return true

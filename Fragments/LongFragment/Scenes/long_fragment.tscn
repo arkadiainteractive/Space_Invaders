@@ -53,12 +53,12 @@ size = Vector3(0.83142, 0.438655, 0.240037)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.020752, 0, -0.125625)
 collision_layer = 4
 collision_mask = 4
-mass = 50.0
 can_sleep = false
 script = ExtResource("1_54815")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0107176, 0.0025543, 0.123988)
+visible = false
 shape = SubResource("BoxShape3D_oyduu")
 
 [node name="fragment" type="MeshInstance3D" parent="."]
@@ -69,6 +69,7 @@ skeleton = NodePath("")
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Area3D" type="Area3D" parent="."]
+visible = false
 collision_layer = 2
 collision_mask = 2
 

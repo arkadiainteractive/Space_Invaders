@@ -34,24 +34,27 @@ func _on_body_entered(body: Node3D) -> void:
 	# Generar y colocar los fragmentos
 	for i in range(num_fragments):
 		# Instanciar la escena del fragmento
-		var fragment_instance = long_fragment_scene.instantiate()
-
-		# Generar una posición aleatoria dentro del área
-		var random_position = generate_random_position_in_area()
-
-		# Aplicar una fuerza aleatoria al fragmento
-		apply_random_force(fragment_instance)
+		var fragment_instance = ObjectPool.get_long_fragment() #@long_fragment_scene.instantiate()
 
 		# Configurar la gravedad y el color del fragmento
 		fragment_instance.set_gravity_scale(fragment_gravity_scale)
 		fragment_instance.set_color(fragment_color)
-		fragment_instance.position = fragment_instance.position * random_position
+
+		# Generar una posición aleatoria dentro del área
+		var random_position = generate_random_position_in_area()
+		#print ("GLOBAL POSITION: ", global_position, " RANDOM_POSITION: ", random_position)
+		fragment_instance.global_position = global_position + random_position
+		#print ("FINAL POSITION: ", fragment_instance.global_position)
+
+		# Aplicar una fuerza aleatoria al fragmento
+		apply_random_force(fragment_instance)
+		fragment_instance.show()
 
 		# Agregar la instancia al árbol de nodos
-		add_child(fragment_instance)
+		#add_child(fragment_instance)
 
 func apply_random_force(fragment: RigidBody3D):
-	var force_magnitude: float = randf_range(5, 35)
+	var force_magnitude: float = randf_range(15, 45)
 
 	var random_direction: Vector3
 	while true:
@@ -67,7 +70,7 @@ func apply_random_force(fragment: RigidBody3D):
 			break  # Salir del bucle cuando se cumple la condición
 
 	var random_torque = Vector3(randf_range(-10, 10), randf_range(-10, 10), randf_range(-10, 10))
-	
+
 	# Multiplica el vector normalizado por la magnitud de la fuerza deseada
 	var force = random_direction * force_magnitude
 

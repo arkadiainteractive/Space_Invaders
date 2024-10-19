@@ -45,7 +45,6 @@ func print_paths(node: Node):
 # Inicializamos el NPC # Llamada recursiva para imprimir los paths de los hijos
 
 func _ready():
-	#path_follow = get_node("/root/Level_1/Alien_1/Path3D/PathFollow3D")
 	var path_node = get_tree().root
 	#print_paths(path_node)
 	impact_timer = Timer.new()
@@ -151,6 +150,7 @@ func move_laterally(delta):
 
 # Función para volver a la posición inicial si fue desplazado
 func return_to_initial_position(delta):
+	linear_velocity.y = 0
 	if shocked:
 		return
 	# Calculamos la diferencia entre la posición actual y la posición inicial
