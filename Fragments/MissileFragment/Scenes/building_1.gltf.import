@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dc06pxqbfvsro"
-path="res://.godot/imported/building_1.gltf-4383eb98b200ca4ced5f4a4c2c42f00a.scn"
+uid="uid://bwcwua47887m2"
+path="res://.godot/imported/building_1.gltf-bce41e024269798ff62da278532de1e5.scn"
 
 [deps]
 
-source_file="res://Buildings/Models/building_1.gltf"
-dest_files=["res://.godot/imported/building_1.gltf-4383eb98b200ca4ced5f4a4c2c42f00a.scn"]
+source_file="res://Fragments/MissileFragment/Scenes/building_1.gltf"
+dest_files=["res://.godot/imported/building_1.gltf-bce41e024269798ff62da278532de1e5.scn"]
 
 [params]
 

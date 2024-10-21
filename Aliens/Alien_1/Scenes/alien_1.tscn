@@ -1,9 +1,7 @@
-[gd_scene load_steps=10 format=4 uid="uid://dopa88phf7x81"]
+[gd_scene load_steps=8 format=4 uid="uid://dopa88phf7x81"]
 
 [ext_resource type="Script" path="res://Aliens/Alien_1/Scripts/alien_1.gd" id="1_a0yc0"]
 [ext_resource type="Texture2D" uid="uid://by47lb1by0lum" path="res://Aliens/Alien_1/Models/alien_1_0.png" id="2_sg11g"]
-[ext_resource type="Script" path="res://Fragments/Frags/Scrips/fragments.gd" id="4_ami6b"]
-[ext_resource type="Script" path="res://Fragments/Frags/Scrips/frag.gd" id="4_k05d5"]
 
 [sub_resource type="Curve3D" id="Curve3D_qde6e"]
 bake_interval = 0.1
@@ -82,113 +80,5 @@ collision_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00139272, 0.860627, 0.0567627)
 shape = SubResource("BoxShape3D_pmugb")
 
-[node name="Fragments" type="Node3D" parent="Path3D/PathFollow3D/Alien_1"]
-visible = false
-script = ExtResource("4_ami6b")
-
-[node name="Frag_1" type="Node3D" parent="Path3D/PathFollow3D/Alien_1/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0929691, 1.36533, 0.0355073)
-script = ExtResource("4_k05d5")
-
-[node name="Frag_2" type="Node3D" parent="Path3D/PathFollow3D/Alien_1/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0887339, 1.36533, 0.0355073)
-script = ExtResource("4_k05d5")
-
-[node name="Frag_3" type="Node3D" parent="Path3D/PathFollow3D/Alien_1/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.286271, 1.18362, 0.0355073)
-script = ExtResource("4_k05d5")
-
-[node name="Frag_4" type="Node3D" parent="Path3D/PathFollow3D/Alien_1/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0929691, 1.15656, 0.0355073)
-script = ExtResource("4_k05d5")
-
-[node name="Frag_5" type="Node3D" parent="Path3D/PathFollow3D/Alien_1/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.140082, 1.1527, 0.0355073)
-script = ExtResource("4_k05d5")
-
-[node name="Frag_6" type="Node3D" parent="Path3D/PathFollow3D/Alien_1/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.282035, 1.19136, 0.0355073)
-script = ExtResource("4_k05d5")
-
-[node name="Frag_7" type="Node3D" parent="Path3D/PathFollow3D/Alien_1/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.485643, 0.985185, 0.0355073)
-script = ExtResource("4_k05d5")
-
-[node name="Frag_8" type="Node3D" parent="Path3D/PathFollow3D/Alien_1/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.29975, 0.985185, 0.0355073)
-script = ExtResource("4_k05d5")
-
-[node name="Frag_9" type="Node3D" parent="Path3D/PathFollow3D/Alien_1/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0971465, 0.985185, 0.0355073)
-script = ExtResource("4_k05d5")
-
-[node name="Frag_10" type="Node3D" parent="Path3D/PathFollow3D/Alien_1/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0991905, 0.985185, 0.0355073)
-script = ExtResource("4_k05d5")
-
-[node name="Frag_11" type="Node3D" parent="Path3D/PathFollow3D/Alien_1/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.282995, 0.985185, 0.0355073)
-script = ExtResource("4_k05d5")
-
-[node name="Frag_12" type="Node3D" parent="Path3D/PathFollow3D/Alien_1/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.491865, 0.985185, 0.0355073)
-script = ExtResource("4_k05d5")
-
-[node name="Frag_13" type="Node3D" parent="Path3D/PathFollow3D/Alien_1/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.692379, 0.755428, 0.0355073)
-script = ExtResource("4_k05d5")
-
-[node name="Frag_14" type="Node3D" parent="Path3D/PathFollow3D/Alien_1/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.493953, 0.755428, 0.0355073)
-script = ExtResource("4_k05d5")
-
-[node name="Frag_15" type="Node3D" parent="Path3D/PathFollow3D/Alien_1/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.270463, 0.755428, 0.0355073)
-script = ExtResource("4_k05d5")
-
-[node name="Frag_16" type="Node3D" parent="Path3D/PathFollow3D/Alien_1/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0887471, 0.755428, 0.0355073)
-script = ExtResource("4_k05d5")
-
-[node name="Frag_17" type="Node3D" parent="Path3D/PathFollow3D/Alien_1/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10759, 0.755428, 0.0355073)
-script = ExtResource("4_k05d5")
-
-[node name="Frag_18" type="Node3D" parent="Path3D/PathFollow3D/Alien_1/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.289306, 0.755428, 0.0355073)
-script = ExtResource("4_k05d5")
-
-[node name="Frag_19" type="Node3D" parent="Path3D/PathFollow3D/Alien_1/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.503953, 0.755428, 0.0355073)
-script = ExtResource("4_k05d5")
-
-[node name="Frag_20" type="Node3D" parent="Path3D/PathFollow3D/Alien_1/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.694342, 0.755428, 0.0355073)
-script = ExtResource("4_k05d5")
-
-[node name="Frag_21" type="Node3D" parent="Path3D/PathFollow3D/Alien_1/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.309888, 0.49475, 0.0355073)
-script = ExtResource("4_k05d5")
-
-[node name="Frag_22" type="Node3D" parent="Path3D/PathFollow3D/Alien_1/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.299175, 0.49475, 0.0355073)
-script = ExtResource("4_k05d5")
-
-[node name="Frag_23" type="Node3D" parent="Path3D/PathFollow3D/Alien_1/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.496342, 0.285984, 0.0355073)
-script = ExtResource("4_k05d5")
-
-[node name="Frag_24" type="Node3D" parent="Path3D/PathFollow3D/Alien_1/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0904089, 0.285984, 0.0355073)
-script = ExtResource("4_k05d5")
-
-[node name="Frag_25" type="Node3D" parent="Path3D/PathFollow3D/Alien_1/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0990265, 0.285984, 0.0355073)
-script = ExtResource("4_k05d5")
-
-[node name="Frag_26" type="Node3D" parent="Path3D/PathFollow3D/Alien_1/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.501093, 0.285984, 0.0355073)
-script = ExtResource("4_k05d5")
-
 [connection signal="ready" from="Path3D/PathFollow3D" to="Path3D/PathFollow3D/Alien_1" method="_on_a_lien_1_path_follow_3d_ready"]
-[connection signal="body_entered" from="Path3D/PathFollow3D/Alien_1/Area3D" to="Path3D/PathFollow3D/Alien_1/Fragments" method="_on_fatal_collision"]
+[connection signal="body_entered" from="Path3D/PathFollow3D/Alien_1/Area3D" to="Path3D/PathFollow3D/Alien_1" method="_on_fatal_collision"]

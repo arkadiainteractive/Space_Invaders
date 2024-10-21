@@ -79,17 +79,18 @@ color_ramp = SubResource("GradientTexture1D_h6ccu")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_strui"]
 shader = ExtResource("3_a7u18")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4lt4f"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t13vf"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("4_pim8p")
 shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
 shader_parameter/flags = 4
+shader_parameter/tex = ExtResource("5_jqdvk")
 shader_parameter/color_ramp = ExtResource("5_jqdvk")
 shader_parameter/curve = ExtResource("6_4km7n")
 
 [sub_resource type="QuadMesh" id="QuadMesh_2rv5c"]
-material = SubResource("ShaderMaterial_4lt4f")
+material = SubResource("ShaderMaterial_t13vf")
 
 [node name="Fire" type="CharacterBody3D"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.397282, -0.196749)

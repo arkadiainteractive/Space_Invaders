@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://6bexoj0gd8qn"]
+[gd_scene load_steps=16 format=3 uid="uid://6bexoj0gd8qn"]
 
 [ext_resource type="PackedScene" uid="uid://dopa88phf7x81" path="res://Aliens/Alien_1/Scenes/alien_1.tscn" id="1_kxlt4"]
 [ext_resource type="PackedScene" uid="uid://cgq5k1nvd1p8m" path="res://Aliens/Alien_2/Scenes/alien_2.tscn" id="2_g4jpc"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://da8muyjhbfw7s" path="res://Weapons/Bomb_1/Scenes/bomb_1.tscn" id="8_fvo04"]
 [ext_resource type="PackedScene" uid="uid://bl3bojtrq50h" path="res://Aliens/Weapons/Bomb_1/Scenes/alien_bomb_1.tscn" id="9_nupta"]
 [ext_resource type="PackedScene" uid="uid://bnq02mm8mwmpf" path="res://Buildings/Scenes/building_1.tscn" id="10_xtydf"]
-[ext_resource type="PackedScene" uid="uid://cw0flyhihmmqe" path="res://Fragments/LongFragment/Scenes/long_fragment.tscn" id="11_a4uaa"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i866c"]
 
@@ -85,6 +84,3 @@ transform = Transform3D(1, 0, 0, 0, 0.573576, -0.819152, 0, 0.819152, 0.573576, 
 
 [node name="Building_1" parent="." instance=ExtResource("10_xtydf")]
 transform = Transform3D(-0.0558215, 0, 0.998441, 0, 1, 0, -0.998441, 0, -0.0558215, -7.1311, 0.517144, -11.6431)
-
-[node name="LongFragment" parent="." instance=ExtResource("11_a4uaa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.03615, 12.7945, -10.2408)

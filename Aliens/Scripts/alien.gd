@@ -1,5 +1,4 @@
-extends RigidBody3D
-class_name Alien
+class_name Alien extends RigidBody3D
 
 @export var critical_impacts = 1
 var mesh_instance
@@ -10,6 +9,8 @@ var path_follow: PathFollow3D
 @export var speed: float = 0.1
 @export var attack_interval_min: float = 30.0  # Valor mínimo del rango
 @export var attack_interval_max: float = 40.0  # Valor máximo del rango
+@export var num_fragments: int = 25
+
 var next_attack_time: float = 0.0
 var attack_timer : float = 0.0
 
@@ -38,6 +39,10 @@ var player_cannon: Node3D
 # Para saber si ha sido desplazado y debe volver a la posición original
 var displaced: bool = false
 
+var frag_scene
+var frag_instance
+var impact_counter = 0
+
 func print_paths(node: Node):
 	# Iterar sobre todos los hijos del nodo actual
 	for child in node.get_children():
@@ -59,15 +64,32 @@ func _ready():
 	bomb_timer = bomb_delay
 	shoot_timer = shoot_delay
 
-	$Fragments.connect("destroy", Destroy)
-	$Fragments.critical_impacts = critical_impacts
 	mesh_instance = $Alien
 	material = mesh_instance.mesh.surface_get_material(0)
 	material.albedo_color = color
 
 	next_attack_time = randf_range(attack_interval_min, attack_interval_max)
 
+func _on_fatal_collision (body: Node3D) -> void:
+	impact_counter += 1
+	if body.collision_layer == 2:
+		Destroy()
+	elif impact_counter > critical_impacts:
+		Destroy()
+
 func Destroy():
+	for i in range(num_fragments):
+		var frag_instance = ObjectPool.get_long_fragment() #@long_fragment_scene.instantiate()
+		frag_instance.position = global_position
+		ObjectPool.apply_random_force(frag_instance, 1, 50)
+
+		mesh_instance = frag_instance.get_node("fragment")
+		material = mesh_instance.mesh.surface_get_material(0)
+		material.albedo_color = color
+
+		var new_material = material.duplicate()
+		mesh_instance.set_surface_override_material(0, new_material)
+		frag_instance.show_fragment()
 	queue_free()
 
 func impact(impact_force: int):

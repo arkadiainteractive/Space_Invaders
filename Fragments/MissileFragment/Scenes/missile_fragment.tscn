@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://c3mj0d5j3imru"]
+[gd_scene load_steps=14 format=4 uid="uid://c3mj0d5j3imru"]
 
 [ext_resource type="Script" path="res://Fragments/MissileFragment/Scripts/missile_fragment.gd" id="1_o2vft"]
 [ext_resource type="Shader" path="res://GPUTrail-main/shaders/trail.gdshader" id="2_kfu1o"]
@@ -48,51 +48,30 @@ shadow_mesh = SubResource("ArrayMesh_i7awt")
 [sub_resource type="BoxShape3D" id="BoxShape3D_s4ipt"]
 size = Vector3(1.93463, 1.92194, 1.92181)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_l1u3v"]
-size = Vector3(0.239502, 0.244995, 0.234009)
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_81abi"]
-lifetime_randomness = 0.5
-particle_flag_rotate_y = true
-emission_shape = 1
-emission_sphere_radius = 0.1
-gravity = Vector3(0, 0, 0)
-radial_accel_min = -2.23517e-06
-radial_accel_max = 20.0
-attractor_interaction_enabled = false
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7qf1a"]
-blend_mode = 1
-shading_mode = 0
-vertex_color_use_as_albedo = true
-
-[sub_resource type="QuadMesh" id="QuadMesh_uds12"]
-material = SubResource("StandardMaterial3D_7qf1a")
-size = Vector2(0.1, 0.1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_r53si"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6msaa"]
 shader = ExtResource("2_kfu1o")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bxkit"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4lt4f"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_81kw4")
 shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
-shader_parameter/flags = 40
+shader_parameter/flags = 4
+shader_parameter/tex = ExtResource("4_agris")
 shader_parameter/color_ramp = ExtResource("4_agris")
 shader_parameter/curve = ExtResource("5_pt5ts")
 
-[sub_resource type="QuadMesh" id="QuadMesh_6pmkd"]
-material = SubResource("ShaderMaterial_bxkit")
-size = Vector2(0.1, 0.1)
+[sub_resource type="QuadMesh" id="QuadMesh_025c8"]
+material = SubResource("ShaderMaterial_4lt4f")
 
-[node name="BasicFragment" type="RigidBody3D"]
+[node name="MissilFragment" type="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00897614, 0, -0.21451)
-collision_mask = 0
-can_sleep = false
+collision_layer = 4
+collision_mask = 4
+sleeping = true
 script = ExtResource("1_o2vft")
 
-[node name="fragment_2x2x2" type="MeshInstance3D" parent="."]
+[node name="fragment" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.0199583, -0.0982566, 0.11975)
 mesh = SubResource("ArrayMesh_iba2c")
 skeleton = NodePath("")
@@ -102,35 +81,25 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.0201139, 0.000580676,
 visible = false
 shape = SubResource("BoxShape3D_s4ipt")
 
-[node name="Area3D" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0194092, 0.000549316, 0.219543)
-shape = SubResource("BoxShape3D_l1u3v")
-
 [node name="Timer" type="Timer" parent="."]
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00876296, 0, 0.213814)
-visible = false
-layers = 129
-amount = 400
-lifetime = 0.2
-process_material = SubResource("ParticleProcessMaterial_81abi")
-draw_pass_1 = SubResource("QuadMesh_uds12")
-
 [node name="GPUTrail3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.00715649, 0, 0.214697)
-amount = 130
-lifetime = 130.0
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.00875951, -0.00124651, 0.214765)
+visible = false
+amount = 30
+lifetime = 30.0
+one_shot = true
 explosiveness = 1.0
 fixed_fps = 0
-process_material = SubResource("ShaderMaterial_r53si")
-draw_pass_1 = SubResource("QuadMesh_6pmkd")
+process_material = SubResource("ShaderMaterial_6msaa")
+draw_pass_1 = SubResource("QuadMesh_025c8")
 script = ExtResource("6_rgr4l")
-length = 130
+length = 30
 color_ramp = ExtResource("4_agris")
 curve = ExtResource("5_pt5ts")
+billboard = true
+dewiggle = false
+clip_overlaps = false
 _defaults_have_been_set = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

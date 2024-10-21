@@ -1,9 +1,7 @@
-[gd_scene load_steps=10 format=4 uid="uid://b856mo2vyvclh"]
+[gd_scene load_steps=8 format=4 uid="uid://b856mo2vyvclh"]
 
 [ext_resource type="Script" path="res://Aliens/Alien_4/Scripts/alien_4.gd" id="1_gbhrm"]
 [ext_resource type="Texture2D" uid="uid://lrrglg56xr45" path="res://Aliens/Alien_3/Models/alien_3_0.png" id="2_80vxs"]
-[ext_resource type="Script" path="res://Fragments/Frags/Scrips/fragments.gd" id="3_t8p86"]
-[ext_resource type="Script" path="res://Fragments/Frags/Scrips/frag.gd" id="4_l67cn"]
 
 [sub_resource type="Curve3D" id="Curve3D_entwf"]
 
@@ -70,124 +68,5 @@ collision_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000640869, 0.869263, 0)
 shape = SubResource("BoxShape3D_sketp")
 
-[node name="Fragments" type="Node3D" parent="Path3D/PathFollow3D/Alien_4"]
-script = ExtResource("3_t8p86")
-
-[node name="Frag_1" type="Node3D" parent="Path3D/PathFollow3D/Alien_4/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.395577, 1.3692, 0.0581521)
-script = ExtResource("4_l67cn")
-
-[node name="Frag_2" type="Node3D" parent="Path3D/PathFollow3D/Alien_4/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.389477, 1.3692, 0.0581521)
-script = ExtResource("4_l67cn")
-
-[node name="Frag_3" type="Node3D" parent="Path3D/PathFollow3D/Alien_4/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.593009, 1.60666, 0.0581521)
-script = ExtResource("4_l67cn")
-
-[node name="Frag_4" type="Node3D" parent="Path3D/PathFollow3D/Alien_4/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.603956, 1.60666, 0.0581521)
-script = ExtResource("4_l67cn")
-
-[node name="Frag_5" type="Node3D" parent="Path3D/PathFollow3D/Alien_4/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.603956, 1.17052, 0.0581521)
-script = ExtResource("4_l67cn")
-
-[node name="Frag_6" type="Node3D" parent="Path3D/PathFollow3D/Alien_4/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.405269, 1.17052, 0.0581521)
-script = ExtResource("4_l67cn")
-
-[node name="Frag_7" type="Node3D" parent="Path3D/PathFollow3D/Alien_4/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.167814, 1.17052, 0.0581521)
-script = ExtResource("4_l67cn")
-
-[node name="Frag_8" type="Node3D" parent="Path3D/PathFollow3D/Alien_4/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.147176, 1.17052, 0.0581521)
-script = ExtResource("4_l67cn")
-
-[node name="Frag_9" type="Node3D" parent="Path3D/PathFollow3D/Alien_4/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.394323, 1.17052, 0.0581521)
-script = ExtResource("4_l67cn")
-
-[node name="Frag_10" type="Node3D" parent="Path3D/PathFollow3D/Alien_4/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.593009, 1.17052, 0.0581521)
-script = ExtResource("4_l67cn")
-
-[node name="Frag_11" type="Node3D" parent="Path3D/PathFollow3D/Alien_4/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.782003, 0.933064, 0.0581521)
-script = ExtResource("4_l67cn")
-
-[node name="Frag_12" type="Node3D" parent="Path3D/PathFollow3D/Alien_4/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.583316, 0.933064, 0.0581521)
-script = ExtResource("4_l67cn")
-
-[node name="Frag_13" type="Node3D" parent="Path3D/PathFollow3D/Alien_4/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.355554, 0.933064, 0.0581521)
-script = ExtResource("4_l67cn")
-
-[node name="Frag_14" type="Node3D" parent="Path3D/PathFollow3D/Alien_4/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.156867, 0.933064, 0.0581521)
-script = ExtResource("4_l67cn")
-
-[node name="Frag_15" type="Node3D" parent="Path3D/PathFollow3D/Alien_4/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.167817, 0.933064, 0.0581521)
-script = ExtResource("4_l67cn")
-
-[node name="Frag_16" type="Node3D" parent="Path3D/PathFollow3D/Alien_4/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.400425, 0.933064, 0.0581521)
-script = ExtResource("4_l67cn")
-
-[node name="Frag_17" type="Node3D" parent="Path3D/PathFollow3D/Alien_4/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.584574, 0.933064, 0.0581521)
-script = ExtResource("4_l67cn")
-
-[node name="Frag_18" type="Node3D" parent="Path3D/PathFollow3D/Alien_4/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.773568, 0.933064, 0.0581521)
-script = ExtResource("4_l67cn")
-
-[node name="Frag_19" type="Node3D" parent="Path3D/PathFollow3D/Alien_4/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.773568, 0.702311, 0.0581521)
-script = ExtResource("4_l67cn")
-
-[node name="Frag_20" type="Node3D" parent="Path3D/PathFollow3D/Alien_4/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.556002, 0.702311, 0.0581521)
-script = ExtResource("4_l67cn")
-
-[node name="Frag_21" type="Node3D" parent="Path3D/PathFollow3D/Alien_4/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.377993, 0.702311, 0.0581521)
-script = ExtResource("4_l67cn")
-
-[node name="Frag_22" type="Node3D" parent="Path3D/PathFollow3D/Alien_4/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.167018, 0.702311, 0.0581521)
-script = ExtResource("4_l67cn")
-
-[node name="Frag_23" type="Node3D" parent="Path3D/PathFollow3D/Alien_4/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.189001, 0.702311, 0.0581521)
-script = ExtResource("4_l67cn")
-
-[node name="Frag_24" type="Node3D" parent="Path3D/PathFollow3D/Alien_4/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.426347, 0.702311, 0.0581521)
-script = ExtResource("4_l67cn")
-
-[node name="Frag_25" type="Node3D" parent="Path3D/PathFollow3D/Alien_4/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.788959, 0.702311, 0.0581521)
-script = ExtResource("4_l67cn")
-
-[node name="Frag_26" type="Node3D" parent="Path3D/PathFollow3D/Alien_4/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01966, 0.36395, 0.0581521)
-script = ExtResource("4_l67cn")
-
-[node name="Frag_27" type="Node3D" parent="Path3D/PathFollow3D/Alien_4/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.02588, 0.36395, 0.0581521)
-script = ExtResource("4_l67cn")
-
-[node name="Frag_28" type="Node3D" parent="Path3D/PathFollow3D/Alien_4/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.318402, 0.0640399, 0.0581521)
-script = ExtResource("4_l67cn")
-
-[node name="Frag_29" type="Node3D" parent="Path3D/PathFollow3D/Alien_4/Fragments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28142, 0.0640399, 0.0581521)
-script = ExtResource("4_l67cn")
-
 [connection signal="ready" from="Path3D/PathFollow3D" to="Path3D/PathFollow3D/Alien_4" method="_on_path_follow_3d_ready"]
-[connection signal="body_entered" from="Path3D/PathFollow3D/Alien_4/Area3D" to="Path3D/PathFollow3D/Alien_4/Fragments" method="_on_fatal_collision"]
+[connection signal="body_entered" from="Path3D/PathFollow3D/Alien_4/Area3D" to="Path3D/PathFollow3D/Alien_4" method="_on_fatal_collision"]

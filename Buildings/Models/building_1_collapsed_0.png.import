@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cps2sfxbqsxel"
-path.s3tc="res://.godot/imported/building_1_damage_0.png-2e8315698107b0450c957b78351fe78f.s3tc.ctex"
+uid="uid://bv7pcxyttccwg"
+path.s3tc="res://.godot/imported/building_1_collapsed_0.png-1867119c3a72b90395cb7a16ba46b659.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "ba2587d3bf67b08eb85459e00d726d5d"
+"md5": "462fac1f439e51647a275a14caf2d419"
 }
 
 [deps]
 
-source_file="res://Buildings/Models/building_1_damage_0.png"
-dest_files=["res://.godot/imported/building_1_damage_0.png-2e8315698107b0450c957b78351fe78f.s3tc.ctex"]
+source_file="res://Buildings/Models/building_1_collapsed_0.png"
+dest_files=["res://.godot/imported/building_1_collapsed_0.png-1867119c3a72b90395cb7a16ba46b659.s3tc.ctex"]
 
 [params]
 

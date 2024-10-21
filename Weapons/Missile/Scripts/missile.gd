@@ -1,7 +1,12 @@
-extends CharacterBody3D
-class_name Missile
+class_name Missile extends CharacterBody3D
 
-@export var color = Color(1, 1, 1)
+@export var color = Color(255, 255, 255)
+var num_fragments: int = 60
+var mesh_instance
+var material
+
+@onready var explosion_scene = preload("res://Weapons/Missile/Scenes/explosion.tscn")
+var explosion_instance
 
 const SPEED = 5.0
 const VELOCITY = 10
@@ -12,7 +17,7 @@ var turn_speed: float = 3.0  # Velocidad de giro del misil
 var id = null
 
 func _ready() -> void:
-	$Fragments.connect("missile_destroyed", _on_missile_destroyed_signal)
+	explosion_instance = explosion_scene.instantiate() # Instancia la escena
 
 func set_color (new_color : Color):
 	color = new_color
@@ -41,7 +46,21 @@ func _physics_process(delta):
 		global_translate(direction * speed * delta)
 		move_and_slide()
 	else:
-		$Fragments.Destroy()
+		Destroy()
+
+func Destroy():
+	explosion_instance.global_transform.origin = global_position # Posiciona la explosión
+	get_tree().root.add_child(explosion_instance) # Añádela como hijo del árbol de nodos
+
+	for i in range(num_fragments):
+		var frag_instance = ObjectPool.get_missile_fragment()
+		print ("FUERZA: ", frag_instance.linear_velocity)
+		var random_position = ObjectPool.generate_random_position_in_area ($Area3D/CollisionShape3D)
+		frag_instance.global_position = global_position + random_position
+		ObjectPool.apply_random_force(frag_instance, 10, 55)
+		frag_instance.set_color(color)
+		frag_instance.show_fragment()
+	queue_free()
 
 func _on_missile_destroyed_signal():
 	queue_free()

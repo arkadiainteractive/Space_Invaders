@@ -13,5 +13,4 @@ func _on_fatal_collision (body: Node3D) -> void:
 		Destroy()
 
 func Destroy():
-	emit_signal("exploded")
 	emit_signal("destroy")
