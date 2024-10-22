@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cw0flyhihmmqe" path="res://Fragments/LongFragment/Scenes/long_fragment.tscn" id="3_enf3b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sil3t"]
-size = Vector3(2.8087, 2.52584, 2.67883)
+size = Vector3(0.763943, 3.87571, 0.777618)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gfjji"]
 resource_name = "Material.1"
@@ -50,7 +50,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_tqvpo")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fno0h"]
-size = Vector3(2.88193, 1, 2.74988)
+size = Vector3(0.808416, 3.73938, 0.774826)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0kea2"]
 emission_shape = 1
@@ -171,79 +171,91 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_blls8")
 
-[sub_resource type="Animation" id="Animation_nqswh"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_xjlaw"]
+resource_name = "collapse"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("RigidBody3D/Dust_grey:emitting")
+tracks/0/path = NodePath("RigidBody3D/Building:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("RigidBody3D/Dust_white:emitting")
+tracks/1/path = NodePath("RigidBody3D/Building:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Building_1_damage:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Building_1_damage:layers")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("RigidBody3D:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Building_collapse:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RigidBody3D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -3.32286, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RigidBody3D/Dust_grey:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("RigidBody3D/Dust_white:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.133333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
-[sub_resource type="Animation" id="Animation_f33lw"]
-resource_name = "collapse"
+[sub_resource type="Animation" id="Animation_4slig"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("RigidBody3D/Dust_grey:emitting")
+tracks/0/path = NodePath("RigidBody3D/Building:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.0666667),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -251,56 +263,68 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("RigidBody3D/Dust_white:emitting")
+tracks/1/path = NodePath("RigidBody3D/Building:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.0666667),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Vector3(0, 0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Building_1_damage:layers")
+tracks/2/path = NodePath("Building_collapse:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Building_1_damage:visible")
+tracks/3/path = NodePath("RigidBody3D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.1),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Vector3(0, 0, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("RigidBody3D:position")
+tracks/4/path = NodePath("RigidBody3D/Dust_grey:emitting")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, -3.5258, 0)]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("RigidBody3D/Dust_white:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_p7dyp"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7r24a"]
 _data = {
-"RESET": SubResource("Animation_nqswh"),
-"collapse": SubResource("Animation_f33lw")
+"RESET": SubResource("Animation_4slig"),
+"collapse": SubResource("Animation_xjlaw")
 }
 
 [node name="Building_1" type="Node3D"]
@@ -317,7 +341,7 @@ freeze = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0406265, 1.2618, 0.097229)
 shape = SubResource("BoxShape3D_sil3t")
 
-[node name="Building_1" type="MeshInstance3D" parent="RigidBody3D"]
+[node name="Building" type="MeshInstance3D" parent="RigidBody3D"]
 transform = Transform3D(0.1, 0, 0, 0, -4.37114e-09, 0.1, 0, -0.1, -4.37114e-09, 0, 0, 0)
 mesh = SubResource("ArrayMesh_knjse")
 skeleton = NodePath("")
@@ -369,7 +393,7 @@ randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_ce2b5")
 draw_pass_1 = SubResource("BoxMesh_3ylbc")
 
-[node name="Building_1_damage" type="MeshInstance3D" parent="."]
+[node name="Building_collapse" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, -4.37114e-09, 0.1, 0, -0.1, -4.37114e-09, 0, 0, 0)
 visible = false
 mesh = SubResource("ArrayMesh_hyx7o")
@@ -377,7 +401,7 @@ skeleton = NodePath("")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_p7dyp")
+"": SubResource("AnimationLibrary_7r24a")
 }
 
 [connection signal="body_entered" from="RigidBody3D/Area3D" to="." method="_on_area_3d_body_entered"]

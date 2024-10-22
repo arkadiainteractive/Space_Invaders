@@ -8,7 +8,7 @@ extends Area3D
 var area_global_position
 
 func _ready() -> void:
-	var fragment = get_node("../Building_1") as MeshInstance3D
+	var fragment = get_node("../Building") as MeshInstance3D
 	var material = fragment.mesh.surface_get_material(0)  # 0 es el índice de la superficie
 	fragment_color = material.albedo_color
 	# Obtener la posición global del Area3D
